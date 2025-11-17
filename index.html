@@ -4,254 +4,313 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portofolio Muhammad Ridwan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
+        :root {
+            --primary: #2563eb;      /* Warna Biru Utama */
+            --accent: #f59e0b;       /* Warna Oranye Aksen */
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gradient: linear-gradient(135deg, #2563eb 0%, #9333ea 100%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 850px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f0f2f5;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f4f8;
+            color: var(--dark);
+            overflow-x: hidden;
         }
-        
-        /* HEADERS & PROFILE */
+
+        /* --- ANIMASI DASAR --- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- HERO SECTION (BAGIAN ATAS) --- */
         header {
+            background: var(--light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 40px 20px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            margin-bottom: 30px;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
         }
+
+        /* Hiasan Latar Belakang */
+        .blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: var(--gradient);
+            filter: blur(80px);
+            opacity: 0.1;
+            border-radius: 50%;
+            z-index: 0;
+            animation: float 6s infinite ease-in-out;
+        }
+
+        .profile-container {
+            position: relative;
+            z-index: 2;
+            margin-bottom: 20px;
+        }
+
         .profile-img {
-            width: 160px;
-            height: 160px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
             object-fit: cover;
-            border: 5px solid #f0f2f5;
-            margin-bottom: 15px;
+            border: 5px solid white;
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+            transition: transform 0.3s;
         }
-        h1 { margin: 5px 0; color: #2c3e50; font-size: 2.2em; }
-        .role { color: #e74c3c; font-size: 1.2em; font-weight: bold; margin-bottom: 5px; }
-        .location { color: #7f8c8d; font-size: 0.95em; }
+        .profile-img:hover { transform: scale(1.05) rotate(3deg); }
 
-        /* SECTIONS */
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            z-index: 2;
+        }
+
+        .typing-text {
+            font-size: 1.2rem;
+            color: #64748b;
+            font-weight: 600;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* --- TOMBOL SOSIAL MEDIA --- */
+        .social-buttons {
+            display: flex;
+            gap: 15px;
+            position: relative;
+            z-index: 2;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .btn-linkedin { background: #0077b5; color: white; }
+        .btn-email { background: #ea4335; color: white; }
+        .btn-ig { 
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+            color: white; 
+        }
+
+        .btn:hover { transform: translateY(-5px); box-shadow: 0 10px 15px rgba(0,0,0,0.2); }
+
+        /* --- CONTAINER ISI --- */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
         section {
             background: white;
-            padding: 30px;
-            margin-bottom: 25px;
-            border-radius: 12px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        h2 { 
-            border-left: 5px solid #e74c3c; 
-            padding-left: 15px; 
-            color: #2c3e50;
-            margin-top: 0;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            border: 1px solid rgba(255,255,255,0.5);
         }
 
-        /* WORK EXPERIENCE */
-        .job-item { margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
-        .job-item:last-child { border-bottom: none; }
-        .job-title { font-size: 1.2em; font-weight: bold; color: #2c3e50; }
-        .company { color: #e74c3c; font-weight: 600; }
-        .date { font-size: 0.9em; color: #95a5a6; font-style: italic; margin-bottom: 10px; display: block;}
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        h2 i { color: var(--primary); }
 
-        /* CERTIFICATES GRID (NEW) */
+        /* --- TIMELINE PENGALAMAN --- */
+        .job-item {
+            border-left: 4px solid var(--primary);
+            padding-left: 20px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .job-item::before {
+            content: '';
+            position: absolute;
+            left: -12px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 4px solid var(--primary);
+            border-radius: 50%;
+        }
+        .job-title { font-size: 1.3rem; font-weight: 700; }
+        .company { color: var(--primary); font-weight: 600; }
+        .date { font-size: 0.9rem; color: #94a3b8; margin-bottom: 10px; display: block; }
+
+        /* --- GRID SERTIFIKAT --- */
         .cert-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
         }
-        .cert-item {
+
+        .cert-card {
             background: #fff;
-            border: 1px solid #e1e4e8;
-            padding: 15px;
-            border-radius: 8px;
-            transition: transform 0.2s;
-            display: flex;
-            align-items: flex-start;
+            border: 1px solid #e2e8f0;
+            padding: 20px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            cursor: default;
         }
-        .cert-item:hover { transform: translateY(-3px); border-color: #e74c3c; }
-        .cert-icon { 
-            font-size: 1.5em; 
-            margin-right: 15px; 
-            color: #2ecc71; /* Warna Hijau Centang */
-            margin-top: 2px;
+        .cert-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.15);
+            border-color: var(--primary);
         }
-        .cert-info h3 { margin: 0 0 5px 0; font-size: 1em; color: #34495e; }
-        .cert-issuer { font-size: 0.85em; color: #7f8c8d; background: #f8f9fa; padding: 2px 8px; border-radius: 4px; display: inline-block; }
+        .cert-icon { font-size: 2rem; color: var(--primary); margin-bottom: 15px; }
+        .cert-title { font-weight: 700; margin-bottom: 5px; display: block; }
+        .cert-issuer { font-size: 0.85rem; color: #64748b; background: #f1f5f9; padding: 3px 10px; border-radius: 20px; }
 
-        /* SKILLS */
+        /* --- SKILL TAGS --- */
+        .skill-container { display: flex; flex-wrap: wrap; gap: 10px; }
         .skill-tag {
-            display: inline-block;
-            background: #ecf0f1;
-            padding: 8px 16px;
-            border-radius: 20px;
-            margin: 5px;
-            font-weight: 600;
-            color: #2c3e50;
-            border: 1px solid #bdc3c7;
+            background: white;
+            border: 1px solid #e2e8f0;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .skill-tag:hover {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.1);
         }
 
-        /* CONTACT BUTTONS */
-        .btn-group { text-align: center; margin-top: 10px; }
-        .contact-btn {
-            display: inline-block;
-            color: white;
-            padding: 12px 30px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            margin: 5px;
-            transition: all 0.3s;
+        /* Footer */
+        footer { text-align: center; padding: 40px; color: #64748b; font-size: 0.9rem; }
+
+        /* Mobile Responsive */
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .blob { display: none; } /* Matikan efek berat di HP */
+            section { padding: 25px; }
         }
-        .linkedin-btn { background: #0077b5; }
-        .email-btn { background: #e74c3c; }
-        .contact-btn:hover { opacity: 0.9; transform: scale(1.05); }
+
+        /* Animasi Float Background */
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(20px, 40px); }
+            100% { transform: translate(0, 0); }
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <img src="foto.jpg" alt="Muhammad Ridwan" class="profile-img">
+        <div class="blob" style="top: -100px; left: -100px;"></div>
+        <div class="blob" style="bottom: -100px; right: -100px; background: #f59e0b;"></div>
+
+        <div class="profile-container fade-in">
+            <img src="foto.jpg" alt="Ridwan" class="profile-img">
+        </div>
+
+        <h1 class="fade-in">Muhammad Ridwan</h1>
+        <div class="typing-text fade-in">Project Admin | Data Enthusiast | Tech Learner</div>
         
-        <h1>Muhammad Ridwan</h1>
-        <p class="role">Project Admin & Support</p>
-        <p class="location"><i class="fas fa-map-marker-alt"></i> Palembang, Sumatera Selatan</p>
-        
-        <div class="btn-group">
-            <a href="https://www.linkedin.com/in/rdwnxz" target="_blank" class="contact-btn linkedin-btn">
-                <i class="fab fa-linkedin"></i> LinkedIn Profil
+        <div class="social-buttons fade-in">
+            <a href="https://www.instagram.com/rdwn.xz/" target="_blank" class="btn btn-ig">
+                <i class="fab fa-instagram"></i> Instagram
             </a>
-            <a href="mailto:emailanda@gmail.com" class="contact-btn email-btn">
-                <i class="fas fa-envelope"></i> Email Saya
+            <a href="https://www.linkedin.com/in/rdwnxz" target="_blank" class="btn btn-linkedin">
+                <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+            <a href="mailto:emailanda@gmail.com" class="btn btn-email">
+                <i class="fas fa-envelope"></i> Email
             </a>
         </div>
     </header>
 
-    <section id="about">
-        <h2>Tentang Saya</h2>
-        <p>
-            Profesional di bidang administrasi proyek telekomunikasi dengan pengalaman di <strong>Telkom Akses</strong>. 
-            Memiliki minat mendalam dan sertifikasi aktif di bidang <strong>Data Science, Python, dan AI</strong>. 
-            Berdedikasi untuk mengintegrasikan keterampilan teknis dalam meningkatkan efisiensi operasional dan analisis data.
-        </p>
-    </section>
-
-    <section id="experience">
-        <h2>Pengalaman Kerja</h2>
-        <div class="job-item">
-            <div class="job-title">Project Admin & Support (Unit Konstruksi)</div>
-            <div class="company">PT. Telkom Akses - Regional Palembang</div>
-            <span class="date">September 2025 - Sekarang</span>
-            <ul>
-                <li>Bertanggung jawab atas validasi dan input data project konstruksi jaringan.</li>
-                <li>Mengelola pelaporan harian menggunakan Microsoft Excel & Google Spreadsheet.</li>
-                <li>Melakukan koordinasi tim lapangan untuk memastikan akurasi data (Support).</li>
-            </ul>
-        </div>
-    </section>
-
-    <section id="certifications">
-        <h2>Lisensi & Sertifikasi</h2>
-        <p style="color:#666; font-size:0.9em; margin-bottom:20px;">Daftar sertifikasi kompetensi yang telah diverifikasi:</p>
+    <div class="container">
         
-        <div class="cert-grid">
-            
-            <div class="cert-item">
-                <i class="fas fa-certificate cert-icon"></i>
-                <div class="cert-info">
-                    <h3>Memulai Pemrograman Dengan Python</h3>
+        <section class="fade-in">
+            <h2><i class="fas fa-user-circle"></i> Tentang Saya</h2>
+            <p>
+                Halo! Saya adalah seorang profesional di bidang <strong>Project Administration</strong> di Telkom Akses Regional Palembang. 
+                Selain mengelola data operasional, saya memiliki passion besar dalam dunia teknologi, khususnya 
+                <strong>Python, Data Science, dan AI</strong>. Saya terus belajar untuk menggabungkan efisiensi administrasi dengan kekuatan data.
+            </p>
+        </section>
+
+        <section class="fade-in">
+            <h2><i class="fas fa-briefcase"></i> Pengalaman Kerja</h2>
+            <div class="job-item">
+                <div class="job-title">Project Admin & Support (Unit Konstruksi)</div>
+                <div class="company">PT. Telkom Akses - Regional Palembang</div>
+                <span class="date"><i class="far fa-calendar-alt"></i> September 2025 - Sekarang</span>
+                <p style="margin-top: 10px;">
+                    Mengelola validasi dokumen proyek, input data harian menggunakan Excel & Spreadsheet, serta memastikan kelancaran komunikasi 
+                    tim lapangan (Support) demi tercapainya target operasional perusahaan.
+                </p>
+            </div>
+        </section>
+
+        <section class="fade-in">
+            <h2><i class="fas fa-certificate"></i> Sertifikasi & Lisensi</h2>
+            <div class="cert-grid">
+                
+                <div class="cert-card">
+                    <i class="fas fa-code cert-icon"></i>
+                    <span class="cert-title">Pemrograman Python</span>
                     <span class="cert-issuer">Dicoding Indonesia</span>
                 </div>
-            </div>
-            
-            <div class="cert-item">
-                <i class="fas fa-database cert-icon"></i>
-                <div class="cert-info">
-                    <h3>Belajar Dasar Structured Query Language (SQL)</h3>
+
+                <div class="cert-card">
+                    <i class="fas fa-database cert-icon"></i>
+                    <span class="cert-title">Data Science & SQL</span>
                     <span class="cert-issuer">Dicoding Indonesia</span>
                 </div>
-            </div>
 
-            <div class="cert-item">
-                <i class="fas fa-chart-bar cert-icon"></i>
-                <div class="cert-info">
-                    <h3>Belajar Dasar Data Science</h3>
+                <div class="cert-card">
+                    <i class="fas fa-robot cert-icon"></i>
+                    <span class="cert-title">Dasar Artificial Intelligence</span>
                     <span class="cert-issuer">Dicoding Indonesia</span>
                 </div>
-            </div>
 
-            <div class="cert-item">
-                <i class="fas fa-robot cert-icon"></i>
-                <div class="cert-info">
-                    <h3>Belajar Dasar AI</h3>
-                    <span class="cert-issuer">Dicoding Indonesia</span>
+                <div class="cert-card">
+                    <i class="fas fa-network-wired cert-icon"></i>
+                    <span class="cert-title">Teknisi Drive Tester</span>
+                    <span class="cert-issuer">FGA - KOMDIGI</span>
                 </div>
-            </div>
-
-            <div class="cert-item">
-                <i class="fas fa-network-wired cert-icon"></i>
-                <div class="cert-info">
-                    <h3>Teknisi Drive Tester</h3>
-                    <span class="cert-issuer">Fresh Graduate Academy (KOMDIGI)</span>
-                </div>
-            </div>
-
-            <div class="cert-item">
-                <i class="fas fa-brain cert-icon"></i>
-                <div class="cert-info">
-                    <h3>AI Engineer For Milenial</h3>
-                    <span class="cert-issuer">DTS - KOMDIGI</span>
-                </div>
-            </div>
-
-            <div class="cert-item">
-                <i class="fas fa-lightbulb cert-icon"></i>
-                <div class="cert-info">
-                    <h3>Memahami Aspek Pengembangan Produk AI</h3>
-                    <span class="cert-issuer">DTS - KOMDIGI</span>
-                </div>
-            </div>
-
-             <div class="cert-item">
-                <i class="fab fa-microsoft cert-icon"></i>
-                <div class="cert-info">
-                    <h3>Rekayasa Prompt dengan Azure OpenAI</h3>
-                    <span class="cert-issuer">Microsoft & KOMDIGI</span>
-                </div>
-            </div>
-
-            <div class="cert-item">
-                <i class="fas fa-shield-alt cert-icon"></i>
-                <div class="cert-info">
-                    <h3>Keamanan Digital & Perlindungan Diri</h3>
-                    <span class="cert-issuer">DTS - KOMDIGI</span>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <section id="skills">
-        <h2>Keahlian Teknis</h2>
-        <div>
-            <span class="skill-tag">Python Programming</span>
-            <span class="skill-tag">SQL & Database</span>
-            <span class="skill-tag">Data Analysis</span>
-            <span class="skill-tag">Microsoft Excel (Advanced)</span>
-            <span class="skill-tag">Prompt Engineering</span>
-            <span class="skill-tag">Drive Testing</span>
-        </div>
-    </section>
-
-    <footer style="text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; color: #777;">
-        &copy; 2025 Muhammad Ridwan.
-    </footer>
-
-</body>
-</html>
