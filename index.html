@@ -24,24 +24,21 @@
             overflow-x: hidden;
         }
 
-        /* --- CSS FOTO (PERBAIKAN) --- */
+        /* --- CSS FOTO UTAMA --- */
         .profile-img {
             width: 180px;
             height: 180px;
             border-radius: 50%;
-            object-fit: cover; /* Agar foto crop bulat rapi */
+            object-fit: cover;
             border: 5px solid white;
             box-shadow: 0 10px 25px rgba(37, 99, 235, 0.2);
             margin-bottom: 20px;
             transition: transform 0.3s;
             cursor: pointer;
         }
-        /* Efek saat mouse diarahkan ke foto */
-        .profile-img:hover { 
-            transform: scale(1.05); 
-        }
+        .profile-img:hover { transform: scale(1.05); }
 
-        /* --- STYLE LAINNYA --- */
+        /* --- LAYOUT --- */
         header {
             background: white;
             padding: 60px 20px;
@@ -62,6 +59,7 @@
 
         .role-text { font-size: 1.1rem; color: #64748b; font-weight: 600; margin-bottom: 25px; }
 
+        /* --- TOMBOL SOSIAL MEDIA (Update WA) --- */
         .social-buttons { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
         .btn {
             padding: 10px 25px; border-radius: 50px; text-decoration: none; font-weight: 600;
@@ -70,9 +68,11 @@
         .btn-ig { background: linear-gradient(45deg, #f09433, #bc1888); }
         .btn-linkedin { background: #0077b5; }
         .btn-email { background: #ea4335; }
+        .btn-wa { background: #25D366; } /* Warna Hijau WA */
+        
         .btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
 
-        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
 
         section {
             background: white; padding: 35px; border-radius: 15px;
@@ -83,6 +83,7 @@
         h2 { font-size: 1.6rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; color: var(--dark); border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
         h2 i { color: var(--primary); }
 
+        /* --- TIMELINE PENGALAMAN --- */
         .timeline-item { border-left: 3px solid var(--primary); padding-left: 20px; margin-bottom: 30px; position: relative; }
         .timeline-item::before { content: ''; position: absolute; left: -9px; top: 5px; width: 15px; height: 15px; background: white; border: 3px solid var(--primary); border-radius: 50%; }
         .item-title { font-size: 1.2rem; font-weight: 700; color: var(--dark); }
@@ -91,10 +92,9 @@
         .item-desc { font-size: 0.95rem; color: #475569; line-height: 1.6; text-align: justify; }
         .item-desc ul { padding-left: 20px; margin-top: 5px; }
 
-        /* --- SERTIFIKAT CLICKABLE --- */
+        /* --- GRID SERTIFIKAT (9 ITEM) --- */
         .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
         
-        /* Link Pembungkus Sertifikat */
         .cert-link { text-decoration: none; color: inherit; display: block; }
         
         .cert-card {
@@ -102,14 +102,10 @@
             transition: all 0.3s; display: flex; align-items: center; gap: 15px; height: 100%;
         }
         .cert-card:hover { transform: translateY(-5px); border-color: var(--primary); background: white; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-        .cert-icon { font-size: 2rem; color: var(--primary); }
-        .cert-info h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 3px; }
-        .cert-issuer { font-size: 0.8rem; color: #64748b; background: #e2e8f0; padding: 2px 8px; border-radius: 4px; }
+        .cert-icon { font-size: 2rem; color: var(--primary); min-width: 40px; text-align: center; }
+        .cert-info h3 { font-size: 0.9rem; font-weight: 700; margin-bottom: 3px; line-height: 1.3; }
+        .cert-issuer { font-size: 0.75rem; color: #64748b; background: #e2e8f0; padding: 2px 8px; border-radius: 4px; }
         .click-hint { font-size: 0.7rem; color: #2563eb; display: block; margin-top: 5px; font-style: italic; }
-
-        .skill-container { display: flex; flex-wrap: wrap; gap: 10px; }
-        .skill-tag { background: white; border: 1px solid #cbd5e1; padding: 6px 15px; border-radius: 50px; font-size: 0.9rem; font-weight: 500; color: #334155; transition: 0.3s; }
-        .skill-tag:hover { background: var(--primary); color: white; border-color: var(--primary); }
 
         footer { text-align: center; padding: 30px; color: #94a3b8; font-size: 0.9rem; }
     </style>
@@ -123,9 +119,18 @@
         <p class="role-text">D3 Teknik Telekomunikasi | Project Admin & Support</p>
         
         <div class="social-buttons">
-            <a href="https://www.instagram.com/rdwn.xz/" target="_blank" class="btn btn-ig"><i class="fab fa-instagram"></i> Instagram</a>
-            <a href="https://www.linkedin.com/in/rdwnxz" target="_blank" class="btn btn-linkedin"><i class="fab fa-linkedin"></i> LinkedIn</a>
-            <a href="mailto:ridwan.bbk911@gmail.com" class="btn btn-email"><i class="fas fa-envelope"></i> Email</a>
+            <a href="https://wa.me/62895620677793" target="_blank" class="btn btn-wa">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+            <a href="https://www.instagram.com/rdwn.xz/" target="_blank" class="btn btn-ig">
+                <i class="fab fa-instagram"></i> Instagram
+            </a>
+            <a href="https://www.linkedin.com/in/rdwnxz" target="_blank" class="btn btn-linkedin">
+                <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+            <a href="mailto:ridwan.bbk911@gmail.com" class="btn btn-email">
+                <i class="fas fa-envelope"></i> Email
+            </a>
         </div>
     </header>
 
@@ -137,9 +142,7 @@
                 Halo! Saya Muhammad Ridwan, lulusan baru D3 Teknik Telekomunikasi dari Politeknik Negeri Sriwijaya.
                 Saat ini, saya bekerja sebagai <strong>Project Admin & Support</strong> di <strong>PT. Telkom Akses Regional Palembang</strong>.
                 <br><br>
-                Dalam peran ini, saya bertanggung jawab mengelola administrasi proyek konstruksi dan memastikan validitas data operasional. 
-                Saya memiliki antusiasme tinggi pada teknologi jaringan Fiber Optik (FTTH) serta aktif mengembangkan keahlian di bidang 
-                Data Science, Python, dan AI untuk mendukung efisiensi kerja.
+                Dalam peran ini, saya bertanggung jawab mengelola administrasi proyek konstruksi, memvalidasi data operasional, serta mendukung kelancaran komunikasi antara manajemen dan tim lapangan. Saya memiliki antusiasme tinggi pada teknologi jaringan Fiber Optik (FTTH) serta aktif mengembangkan keahlian di bidang Data Science, Python, dan AI.
             </p>
         </section>
 
@@ -147,14 +150,14 @@
             <h2><i class="fas fa-briefcase"></i> Pengalaman Kerja</h2>
             
             <div class="timeline-item">
-                <div class="item-title">Project Admin & Support (Internship & Contract)</div>
+                <div class="item-title">Project Admin & Support</div>
                 <span class="item-subtitle">PT. Telkom Akses Palembang</span>
                 <span class="item-date">Juli 2024 - Sekarang</span>
                 <div class="item-desc">
                     <ul>
                         <li>Memonitoring keadaan WiFi Palembang zona Sumatera Selatan dengan berbasis website internal perusahaan.</li>
-                        <li>Melaporkan WiFi pelanggan yang mengalami gangguan (lost) agar bisa segera dikerjakan teknisi.</li>
-                        <li>Melakukan pelatihan Quality Control (QC) untuk perangkat pelanggan yang akan didistribusikan.</li>
+                        <li>Melaporkan WiFi pelanggan yang mengalami gangguan (lost) agar segera ditangani teknisi.</li>
+                        <li>Melakukan pelatihan Quality Control (QC) perangkat pelanggan sebelum distribusi.</li>
                         <li>Melakukan pelatihan dan praktek langsung instalasi jaringan pelanggan di lapangan.</li>
                         <li>Mengelola administrasi harian proyek konstruksi regional Palembang (Posisi saat ini).</li>
                     </ul>
@@ -169,13 +172,12 @@
                     <p><strong>Media Comunication Indonesia (2024-2025):</strong></p>
                     <ul>
                         <li>Mengelola Event Corporate seperti HUT BPJS Ketenagakerjaan, BSI Byond, dan lainnya.</li>
-                        <li>Bekerja sama dengan tim untuk memenuhi kebutuhan klien secara profesional.</li>
                     </ul>
                     <br>
                     <p><strong>Endless Creative (2023-2024):</strong></p>
                     <ul>
-                        <li>Menjadi crew di event konser besar Palembang (Nyanyian Riang Gembira, Agrifest, Lawfest).</li>
-                        <li>Berperan aktif di berbagai posisi: Runner, Ticketing, Crowd Control, dan Crew Backstage.</li>
+                        <li>Crew event konser besar Palembang (Nyanyian Riang Gembira, Agrifest, Lawfest).</li>
+                        <li>Posisi: Runner, Ticketing, Crowd Control, dan Crew Backstage.</li>
                     </ul>
                 </div>
             </div>
@@ -186,8 +188,8 @@
                 <span class="item-date">2023 - 2024</span>
                 <div class="item-desc">
                     <ul>
-                        <li>Menjadi Ketua Pelaksana Event Futsal Tournament Pocari Sweat X AFP Sumatera Selatan.</li>
-                        <li>Mengelola event secara keseluruhan dan memimpin tim untuk memastikan kelancaran acara.</li>
+                        <li>Ketua Pelaksana Event Futsal Tournament Pocari Sweat X AFP Sumatera Selatan.</li>
+                        <li>Memimpin tim kepanitiaan untuk memastikan kelancaran seluruh rangkaian acara.</li>
                     </ul>
                 </div>
             </div>
@@ -224,8 +226,8 @@
         </section>
 
         <section>
-            <h2><i class="fas fa-certificate"></i> Sertifikasi</h2>
-            <p style="margin-bottom: 20px; font-size: 0.9rem; color: red;">*Klik pada kotak sertifikat untuk melihat gambar asli.</p>
+            <h2><i class="fas fa-certificate"></i> Sertifikasi (9 Item)</h2>
+            <p style="margin-bottom: 20px; font-size: 0.9rem; color: red;">*Klik sertifikat untuk melihat gambar asli.</p>
             
             <div class="cert-grid">
                 
@@ -235,51 +237,95 @@
                         <div class="cert-info">
                             <h3>Pemrograman Python</h3>
                             <span class="cert-issuer">Dicoding Indonesia</span>
-                            <span class="click-hint">(Klik untuk lihat)</span>
+                            <span class="click-hint">(Klik Lihat)</span>
                         </div>
                     </div>
                 </a>
 
                 <a href="sertifikat_data.jpg" target="_blank" class="cert-link">
                     <div class="cert-card">
-                        <i class="fas fa-database cert-icon"></i>
+                        <i class="fas fa-chart-bar cert-icon"></i>
                         <div class="cert-info">
-                            <h3>Data Science & SQL</h3>
+                            <h3>Data Science Basics</h3>
                             <span class="cert-issuer">Dicoding Indonesia</span>
-                            <span class="click-hint">(Klik untuk lihat)</span>
+                            <span class="click-hint">(Klik Lihat)</span>
                         </div>
                     </div>
                 </a>
 
-                <a href="sertifikat_ai.jpg" target="_blank" class="cert-link">
+                <a href="sertifikat_sql.jpg" target="_blank" class="cert-link">
+                    <div class="cert-card">
+                        <i class="fas fa-database cert-icon"></i>
+                        <div class="cert-info">
+                            <h3>Structured Query Language (SQL)</h3>
+                            <span class="cert-issuer">Dicoding Indonesia</span>
+                            <span class="click-hint">(Klik Lihat)</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="sertifikat_ai_dasar.jpg" target="_blank" class="cert-link">
                     <div class="cert-card">
                         <i class="fas fa-robot cert-icon"></i>
                         <div class="cert-info">
                             <h3>Dasar Artificial Intelligence</h3>
                             <span class="cert-issuer">Dicoding Indonesia</span>
-                            <span class="click-hint">(Klik untuk lihat)</span>
+                            <span class="click-hint">(Klik Lihat)</span>
                         </div>
                     </div>
                 </a>
 
-                <a href="sertifikat_fga.jpg" target="_blank" class="cert-link">
+                <a href="sertifikat_drive_tester.jpg" target="_blank" class="cert-link">
                     <div class="cert-card">
                         <i class="fas fa-network-wired cert-icon"></i>
                         <div class="cert-info">
                             <h3>Teknisi Drive Tester</h3>
                             <span class="cert-issuer">FGA - KOMDIGI</span>
-                            <span class="click-hint">(Klik untuk lihat)</span>
+                            <span class="click-hint">(Klik Lihat)</span>
                         </div>
                     </div>
                 </a>
 
-                 <a href="sertifikat_azure.jpg" target="_blank" class="cert-link">
+                <a href="sertifikat_ai_engineer.jpg" target="_blank" class="cert-link">
+                    <div class="cert-card">
+                        <i class="fas fa-brain cert-icon"></i>
+                        <div class="cert-info">
+                            <h3>AI Engineer For Milenial</h3>
+                            <span class="cert-issuer">DTS - KOMDIGI</span>
+                            <span class="click-hint">(Klik Lihat)</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="sertifikat_produk_ai.jpg" target="_blank" class="cert-link">
+                    <div class="cert-card">
+                        <i class="fas fa-lightbulb cert-icon"></i>
+                        <div class="cert-info">
+                            <h3>Pengembangan Produk AI</h3>
+                            <span class="cert-issuer">DTS - KOMDIGI</span>
+                            <span class="click-hint">(Klik Lihat)</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="sertifikat_azure.jpg" target="_blank" class="cert-link">
                     <div class="cert-card">
                         <i class="fab fa-microsoft cert-icon"></i>
                         <div class="cert-info">
                             <h3>Rekayasa Prompt (Azure)</h3>
                             <span class="cert-issuer">Microsoft & KOMDIGI</span>
-                            <span class="click-hint">(Klik untuk lihat)</span>
+                            <span class="click-hint">(Klik Lihat)</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="sertifikat_keamanan.jpg" target="_blank" class="cert-link">
+                    <div class="cert-card">
+                        <i class="fas fa-shield-alt cert-icon"></i>
+                        <div class="cert-info">
+                            <h3>Keamanan Digital</h3>
+                            <span class="cert-issuer">DTS - KOMDIGI</span>
+                            <span class="click-hint">(Klik Lihat)</span>
                         </div>
                     </div>
                 </a>
