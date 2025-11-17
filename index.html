@@ -24,7 +24,7 @@
             overflow-x: hidden;
         }
 
-        /* --- CSS FOTO UTAMA --- */
+        /* --- CSS FOTO --- */
         .profile-img {
             width: 180px;
             height: 180px;
@@ -38,7 +38,7 @@
         }
         .profile-img:hover { transform: scale(1.05); }
 
-        /* --- LAYOUT --- */
+        /* --- HEADER --- */
         header {
             background: white;
             padding: 60px 20px;
@@ -59,7 +59,7 @@
 
         .role-text { font-size: 1.1rem; color: #64748b; font-weight: 600; margin-bottom: 25px; }
 
-        /* --- TOMBOL SOSIAL MEDIA (Update WA) --- */
+        /* --- TOMBOL SOSIAL MEDIA --- */
         .social-buttons { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
         .btn {
             padding: 10px 25px; border-radius: 50px; text-decoration: none; font-weight: 600;
@@ -68,7 +68,7 @@
         .btn-ig { background: linear-gradient(45deg, #f09433, #bc1888); }
         .btn-linkedin { background: #0077b5; }
         .btn-email { background: #ea4335; }
-        .btn-wa { background: #25D366; } /* Warna Hijau WA */
+        .btn-wa { background: #25D366; }
         
         .btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
 
@@ -83,8 +83,8 @@
         h2 { font-size: 1.6rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; color: var(--dark); border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
         h2 i { color: var(--primary); }
 
-        /* --- TIMELINE PENGALAMAN --- */
-        .timeline-item { border-left: 3px solid var(--primary); padding-left: 20px; margin-bottom: 30px; position: relative; }
+        /* --- TIMELINE STYLE --- */
+        .timeline-item { border-left: 3px solid var(--primary); padding-left: 20px; margin-bottom: 40px; position: relative; }
         .timeline-item::before { content: ''; position: absolute; left: -9px; top: 5px; width: 15px; height: 15px; background: white; border: 3px solid var(--primary); border-radius: 50%; }
         .item-title { font-size: 1.2rem; font-weight: 700; color: var(--dark); }
         .item-subtitle { color: var(--primary); font-weight: 600; font-size: 1rem; display: block; margin-bottom: 5px; }
@@ -92,11 +92,9 @@
         .item-desc { font-size: 0.95rem; color: #475569; line-height: 1.6; text-align: justify; }
         .item-desc ul { padding-left: 20px; margin-top: 5px; }
 
-        /* --- GRID SERTIFIKAT (9 ITEM) --- */
+        /* --- SERTIFIKAT GRID --- */
         .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
-        
         .cert-link { text-decoration: none; color: inherit; display: block; }
-        
         .cert-card {
             background: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; border-radius: 10px;
             transition: all 0.3s; display: flex; align-items: center; gap: 15px; height: 100%;
@@ -119,18 +117,10 @@
         <p class="role-text">D3 Teknik Telekomunikasi | Project Admin & Support</p>
         
         <div class="social-buttons">
-            <a href="https://wa.me/62895620677793" target="_blank" class="btn btn-wa">
-                <i class="fab fa-whatsapp"></i> WhatsApp
-            </a>
-            <a href="https://www.instagram.com/rdwn.xz/" target="_blank" class="btn btn-ig">
-                <i class="fab fa-instagram"></i> Instagram
-            </a>
-            <a href="https://www.linkedin.com/in/rdwnxz" target="_blank" class="btn btn-linkedin">
-                <i class="fab fa-linkedin"></i> LinkedIn
-            </a>
-            <a href="mailto:ridwan.bbk911@gmail.com" class="btn btn-email">
-                <i class="fas fa-envelope"></i> Email
-            </a>
+            <a href="https://wa.me/62895620677793" target="_blank" class="btn btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="https://www.instagram.com/rdwn.xz/" target="_blank" class="btn btn-ig"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="https://www.linkedin.com/in/rdwnxz" target="_blank" class="btn btn-linkedin"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="mailto:ridwan.bbk911@gmail.com" class="btn btn-email"><i class="fas fa-envelope"></i> Email</a>
         </div>
     </header>
 
@@ -151,45 +141,64 @@
             
             <div class="timeline-item">
                 <div class="item-title">Project Admin & Support</div>
+                <span class="item-subtitle">PT. Telkom Akses Palembang (Current Job)</span>
+                <span class="item-date">September 2025 - Sekarang</span>
+                <div class="item-desc">
+                    <ul>
+                        <li>Bertanggung jawab atas administrasi harian proyek konstruksi di Unit Konstruksi Regional Palembang.</li>
+                        <li>Mengelola dan memvalidasi data proyek menggunakan Excel & Google Spreadsheet.</li>
+                        <li>Memberikan dukungan (support) komunikasi antara tim manajemen dan tim lapangan agar target operasional tercapai.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="item-title">Kerja Praktek (Internship)</div>
                 <span class="item-subtitle">PT. Telkom Akses Palembang</span>
-                <span class="item-date">Juli 2024 - Sekarang</span>
+                <span class="item-date">Juli 2024 - Oktober 2024</span>
                 <div class="item-desc">
                     <ul>
-                        <li>Memonitoring keadaan WiFi Palembang zona Sumatera Selatan dengan berbasis website internal perusahaan.</li>
-                        <li>Melaporkan WiFi pelanggan yang mengalami gangguan (lost) agar segera ditangani teknisi.</li>
-                        <li>Melakukan pelatihan Quality Control (QC) perangkat pelanggan sebelum distribusi.</li>
-                        <li>Melakukan pelatihan dan praktek langsung instalasi jaringan pelanggan di lapangan.</li>
-                        <li>Mengelola administrasi harian proyek konstruksi regional Palembang (Posisi saat ini).</li>
+                        <li>Memonitoring keadaan WiFi palembang zona sumatera selatan dengan berbasis website internal perusahaan.</li>
+                        <li>Melaporkan WiFi pelanggan yang mengalami lost agar bisa segera di kerjakan teknisi.</li>
+                        <li>Melakukan pelatihan Quality Control untuk perangkat pelanggan yang akan di distribusikan.</li>
+                        <li>Melakukan pelatihan dan praktek langsung instalasi jaringan pelanggan.</li>
                     </ul>
                 </div>
             </div>
 
             <div class="timeline-item">
-                <div class="item-title">Event Organizer Professional</div>
-                <span class="item-subtitle">Media Comunication Indonesia & Endless Creative</span>
-                <span class="item-date">2023 - 2025</span>
+                <div class="item-title">Media Comunication Indonesia</div>
+                <span class="item-subtitle">Event Organizer Crew</span>
+                <span class="item-date">2024 - 2025</span>
                 <div class="item-desc">
-                    <p><strong>Media Comunication Indonesia (2024-2025):</strong></p>
                     <ul>
-                        <li>Mengelola Event Corporate seperti HUT BPJS Ketenagakerjaan, BSI Byond, dan lainnya.</li>
-                    </ul>
-                    <br>
-                    <p><strong>Endless Creative (2023-2024):</strong></p>
-                    <ul>
-                        <li>Crew event konser besar Palembang (Nyanyian Riang Gembira, Agrifest, Lawfest).</li>
-                        <li>Posisi: Runner, Ticketing, Crowd Control, dan Crew Backstage.</li>
+                        <li>Mengelola Event Corporate seperti, HUT Bpjs Ketenagakerjaan, BSI Byond, dan lainnya.</li>
+                        <li>Bekerja sama team untuk memenuhi kebutuhan client.</li>
                     </ul>
                 </div>
             </div>
 
             <div class="timeline-item">
-                <div class="item-title">Ketua Pelaksana Event</div>
-                <span class="item-subtitle">Pocari Sweat Palembang</span>
+                <div class="item-title">Pocari Sweat Palembang</div>
+                <span class="item-subtitle">Ketua Pelaksana Event</span>
                 <span class="item-date">2023 - 2024</span>
                 <div class="item-desc">
                     <ul>
-                        <li>Ketua Pelaksana Event Futsal Tournament Pocari Sweat X AFP Sumatera Selatan.</li>
-                        <li>Memimpin tim kepanitiaan untuk memastikan kelancaran seluruh rangkaian acara.</li>
+                        <li>Menjadi Ketua Pelaksana Event Futsal tournament pocari sweat X AFP Sumatera selatan.</li>
+                        <li>Mengelola event dan team untuk berjalan nya Event tersebut.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="item-title">Endless Creative</div>
+                <span class="item-subtitle">Event Crew</span>
+                <span class="item-date">2023 - 2024</span>
+                <div class="item-desc">
+                    <ul>
+                        <li>Menjadi crew di event konser palembang, seperti Nyanyian Riang Gembira (NRG) 2023, Menuju NRG 2023, Agrifest 2023, Lawfest2 2023.</li>
+                        <li>Disetiap event posisi selalu berubah dengan komposisi team yang berbeda, seperti runner, ticketing, crowd control, crew backstage.</li>
+                        <li>Bekerja sama secara tim, guna meningkat kan pelayanan yang baik.</li>
                     </ul>
                 </div>
             </div>
@@ -204,9 +213,9 @@
                 <span class="item-date">Desember 2023 - Desember 2024</span>
                 <div class="item-desc">
                     <ul>
-                        <li>Mengelola jadwal latihan atlet secara rutin serta berkoordinasi aktif dengan pihak lembaga dan pelatih.</li>
-                        <li>Menjadi Ketua Official Politeknik Negeri Sriwijaya dalam ajang Porseni ke-XIV di Politeknik Negeri Malang.</li>
-                        <li>Berhasil membawa tim menjadi Juara Umum ke-5 secara berturut-turut dalam ajang tersebut.</li>
+                        <li>Mengelola jadwal latihan atlit, serta berkoordinasi dengan pihak lembaga dan pelatih.</li>
+                        <li>Menjadi Ketua official Politeknik Negeri Sriwijaya dalam Porseni ke -XIV di Politeknik Negeri Malang.</li>
+                        <li>Menjadi juara umum ke - 5 secara beturut-turut.</li>
                     </ul>
                 </div>
             </div>
@@ -217,9 +226,9 @@
                 <span class="item-date">Agustus 2020 - Juli 2021</span>
                 <div class="item-desc">
                     <ul>
-                        <li>Melakukan kegiatan Pengenalan Lingkungan Sekolah (MPLS) untuk siswa baru dengan sistem online.</li>
-                        <li>Mengelola kegiatan vaksinasi massal di sekolah, mencakup vaksinasi dosis 1, dosis 2, hingga booster 1.</li>
-                        <li>Mengelola struktur organisasi agar kegiatan tetap berjalan efektif secara hybrid (daring & luring) di masa pandemi.</li>
+                        <li>Melakukan Pengenalan Siswa baru dengan sistem online.</li>
+                        <li>Mengelola kegiatan vaksinasi massal di sekolah, vaksinasi 1, vaksinasi 2, vaksinasi booster 1.</li>
+                        <li>Mengelola organisasi agar dapat berjalan secara hybrid.</li>
                     </ul>
                 </div>
             </div>
@@ -257,7 +266,7 @@
                     <div class="cert-card">
                         <i class="fas fa-database cert-icon"></i>
                         <div class="cert-info">
-                            <h3>Structured Query Language (SQL)</h3>
+                            <h3>Structured Query Language</h3>
                             <span class="cert-issuer">Dicoding Indonesia</span>
                             <span class="click-hint">(Klik Lihat)</span>
                         </div>
