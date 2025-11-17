@@ -10,7 +10,6 @@
     <style>
         :root {
             --primary: #2563eb;      
-            --accent: #f59e0b;       
             --dark: #1e293b;
             --light: #f8fafc;
             --gradient: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
@@ -25,30 +24,32 @@
             overflow-x: hidden;
         }
 
-        /* --- HERO SECTION --- */
-        header {
-            background: white;
-            padding: 60px 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            animation: fadeIn 1s ease-out;
-        }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
+        /* --- CSS FOTO (PERBAIKAN) --- */
         .profile-img {
             width: 180px;
             height: 180px;
             border-radius: 50%;
-            object-fit: cover;
+            object-fit: cover; /* Agar foto crop bulat rapi */
             border: 5px solid white;
             box-shadow: 0 10px 25px rgba(37, 99, 235, 0.2);
             margin-bottom: 20px;
             transition: transform 0.3s;
+            cursor: pointer;
         }
-        ridwan_formal.jpg:hover { transform: scale(1.05); }
+        /* Efek saat mouse diarahkan ke foto */
+        .profile-img:hover { 
+            transform: scale(1.05); 
+        }
+
+        /* --- STYLE LAINNYA --- */
+        header {
+            background: white;
+            padding: 60px 20px;
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         h1 {
             font-size: 2.5rem;
@@ -61,7 +62,6 @@
 
         .role-text { font-size: 1.1rem; color: #64748b; font-weight: 600; margin-bottom: 25px; }
 
-        /* Social Buttons */
         .social-buttons { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
         .btn {
             padding: 10px 25px; border-radius: 50px; text-decoration: none; font-weight: 600;
@@ -72,8 +72,7 @@
         .btn-email { background: #ea4335; }
         .btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
 
-        /* --- CONTAINER UTAMA --- */
-        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
 
         section {
             background: white; padding: 35px; border-radius: 15px;
@@ -84,55 +83,44 @@
         h2 { font-size: 1.6rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; color: var(--dark); border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
         h2 i { color: var(--primary); }
 
-        /* --- PENGALAMAN & PENDIDIKAN --- */
-        .timeline-item {
-            border-left: 3px solid var(--primary); padding-left: 20px; margin-bottom: 25px; position: relative;
-        }
-        .timeline-item::before {
-            content: ''; position: absolute; left: -9px; top: 5px; width: 15px; height: 15px;
-            background: white; border: 3px solid var(--primary); border-radius: 50%;
-        }
+        .timeline-item { border-left: 3px solid var(--primary); padding-left: 20px; margin-bottom: 30px; position: relative; }
+        .timeline-item::before { content: ''; position: absolute; left: -9px; top: 5px; width: 15px; height: 15px; background: white; border: 3px solid var(--primary); border-radius: 50%; }
         .item-title { font-size: 1.2rem; font-weight: 700; color: var(--dark); }
         .item-subtitle { color: var(--primary); font-weight: 600; font-size: 1rem; display: block; margin-bottom: 5px; }
         .item-date { font-size: 0.85rem; color: #94a3b8; font-style: italic; margin-bottom: 10px; display: block; }
-        .item-desc { font-size: 0.95rem; color: #475569; line-height: 1.6; }
+        .item-desc { font-size: 0.95rem; color: #475569; line-height: 1.6; text-align: justify; }
         .item-desc ul { padding-left: 20px; margin-top: 5px; }
 
-        /* --- SERTIFIKAT GRID --- */
+        /* --- SERTIFIKAT CLICKABLE --- */
         .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
+        
+        /* Link Pembungkus Sertifikat */
+        .cert-link { text-decoration: none; color: inherit; display: block; }
+        
         .cert-card {
             background: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; border-radius: 10px;
-            transition: all 0.3s; display: flex; align-items: start; gap: 15px;
+            transition: all 0.3s; display: flex; align-items: center; gap: 15px; height: 100%;
         }
         .cert-card:hover { transform: translateY(-5px); border-color: var(--primary); background: white; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-        .cert-icon { font-size: 1.8rem; color: var(--primary); margin-top: 3px; }
+        .cert-icon { font-size: 2rem; color: var(--primary); }
         .cert-info h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 3px; }
         .cert-issuer { font-size: 0.8rem; color: #64748b; background: #e2e8f0; padding: 2px 8px; border-radius: 4px; }
+        .click-hint { font-size: 0.7rem; color: #2563eb; display: block; margin-top: 5px; font-style: italic; }
 
-        /* --- SKILL TAGS --- */
         .skill-container { display: flex; flex-wrap: wrap; gap: 10px; }
-        .skill-tag {
-            background: white; border: 1px solid #cbd5e1; padding: 6px 15px; border-radius: 50px;
-            font-size: 0.9rem; font-weight: 500; color: #334155; transition: 0.3s;
-        }
+        .skill-tag { background: white; border: 1px solid #cbd5e1; padding: 6px 15px; border-radius: 50px; font-size: 0.9rem; font-weight: 500; color: #334155; transition: 0.3s; }
         .skill-tag:hover { background: var(--primary); color: white; border-color: var(--primary); }
 
         footer { text-align: center; padding: 30px; color: #94a3b8; font-size: 0.9rem; }
-        
-        @media (max-width: 600px) {
-            header { padding: 40px 20px; }
-            h1 { font-size: 2rem; }
-            section { padding: 20px; }
-        }
     </style>
 </head>
 <body>
 
     <header>
-        <img src="foto.jpg" alt="Muhammad Ridwan" class="profile-img">
+        <img src="ridwan_formal.jpg" alt="Muhammad Ridwan" class="profile-img">
         
         <h1>Muhammad Ridwan</h1>
-        <p class="role-text">D3 Teknik Telekomunikasi | Network Engineer & Event Organizer</p>
+        <p class="role-text">D3 Teknik Telekomunikasi | Project Admin & Support</p>
         
         <div class="social-buttons">
             <a href="https://www.instagram.com/rdwn.xz/" target="_blank" class="btn btn-ig"><i class="fab fa-instagram"></i> Instagram</a>
@@ -146,75 +134,60 @@
         <section>
             <h2><i class="fas fa-user"></i> Tentang Saya</h2>
             <p>
-                Lulusan baru <strong>D3 Teknik Telekomunikasi</strong> dari Politeknik Negeri Sriwijaya dengan antusiasme tinggi pada teknologi jaringan dan Fiber Optik (FTTH). 
-                Memiliki pengalaman praktis dalam instalasi, konfigurasi, dan pemeliharaan perangkat jaringan.
-                Selain teknis, saya juga berpengalaman dalam manajemen acara (Event Organizer) yang melatih kemampuan kepemimpinan, kerja sama tim, dan komunikasi saya.
+                Halo! Saya Muhammad Ridwan, lulusan baru D3 Teknik Telekomunikasi dari Politeknik Negeri Sriwijaya.
+                Saat ini, saya bekerja sebagai <strong>Project Admin & Support</strong> di <strong>PT. Telkom Akses Regional Palembang</strong>.
+                <br><br>
+                Dalam peran ini, saya bertanggung jawab mengelola administrasi proyek konstruksi dan memastikan validitas data operasional. 
+                Saya memiliki antusiasme tinggi pada teknologi jaringan Fiber Optik (FTTH) serta aktif mengembangkan keahlian di bidang 
+                Data Science, Python, dan AI untuk mendukung efisiensi kerja.
             </p>
-        </section>
-
-        <section>
-            <h2><i class="fas fa-graduation-cap"></i> Pendidikan</h2>
-            <div class="timeline-item">
-                <div class="item-title">Politeknik Negeri Sriwijaya</div>
-                <span class="item-subtitle">D3 Teknik Telekomunikasi</span>
-                <span class="item-date">2022 - 2025 | Palembang</span>
-            </div>
-            <div class="timeline-item">
-                <div class="item-title">SMA Negeri 16 Palembang</div>
-                <span class="item-subtitle">Jurusan IPA</span>
-                <span class="item-date">2019 - 2022</span>
-            </div>
         </section>
 
         <section>
             <h2><i class="fas fa-briefcase"></i> Pengalaman Kerja</h2>
             
             <div class="timeline-item">
-                <div class="item-title">Kerja Praktek (Internship)</div>
+                <div class="item-title">Project Admin & Support (Internship & Contract)</div>
                 <span class="item-subtitle">PT. Telkom Akses Palembang</span>
-                <span class="item-date">Juli 2024 - Oktober 2024</span>
+                <span class="item-date">Juli 2024 - Sekarang</span>
                 <div class="item-desc">
                     <ul>
-                        <li>Memonitoring keadaan WiFi Palembang zona Sumatera Selatan berbasis website internal.</li>
-                        <li>Melaporkan gangguan WiFi pelanggan (Lost Connection) untuk tindak lanjut teknisi.</li>
-                        <li>Melakukan Quality Control (QC) perangkat pelanggan sebelum distribusi.</li>
-                        <li>Praktek langsung instalasi jaringan pelanggan di lapangan.</li>
+                        <li>Memonitoring keadaan WiFi Palembang zona Sumatera Selatan dengan berbasis website internal perusahaan.</li>
+                        <li>Melaporkan WiFi pelanggan yang mengalami gangguan (lost) agar bisa segera dikerjakan teknisi.</li>
+                        <li>Melakukan pelatihan Quality Control (QC) untuk perangkat pelanggan yang akan didistribusikan.</li>
+                        <li>Melakukan pelatihan dan praktek langsung instalasi jaringan pelanggan di lapangan.</li>
+                        <li>Mengelola administrasi harian proyek konstruksi regional Palembang (Posisi saat ini).</li>
                     </ul>
                 </div>
             </div>
 
             <div class="timeline-item">
-                <div class="item-title">Event Organizer Crew</div>
-                <span class="item-subtitle">Media Comunication Indonesia</span>
-                <span class="item-date">2024 - 2025</span>
+                <div class="item-title">Event Organizer Professional</div>
+                <span class="item-subtitle">Media Comunication Indonesia & Endless Creative</span>
+                <span class="item-date">2023 - 2025</span>
                 <div class="item-desc">
+                    <p><strong>Media Comunication Indonesia (2024-2025):</strong></p>
                     <ul>
-                        <li>Mengelola Event Corporate seperti HUT BPJS Ketenagakerjaan dan BSI Byond.</li>
-                        <li>Bekerja sama dalam tim untuk memenuhi kebutuhan klien korporat.</li>
+                        <li>Mengelola Event Corporate seperti HUT BPJS Ketenagakerjaan, BSI Byond, dan lainnya.</li>
+                        <li>Bekerja sama dengan tim untuk memenuhi kebutuhan klien secara profesional.</li>
+                    </ul>
+                    <br>
+                    <p><strong>Endless Creative (2023-2024):</strong></p>
+                    <ul>
+                        <li>Menjadi crew di event konser besar Palembang (Nyanyian Riang Gembira, Agrifest, Lawfest).</li>
+                        <li>Berperan aktif di berbagai posisi: Runner, Ticketing, Crowd Control, dan Crew Backstage.</li>
                     </ul>
                 </div>
             </div>
 
             <div class="timeline-item">
-                <div class="item-title">Ketua Pelaksana</div>
-                <span class="item-subtitle">Pocari Sweat Palembang (Event Futsal)</span>
+                <div class="item-title">Ketua Pelaksana Event</div>
+                <span class="item-subtitle">Pocari Sweat Palembang</span>
                 <span class="item-date">2023 - 2024</span>
                 <div class="item-desc">
                     <ul>
-                        <li>Menjadi Ketua Pelaksana Turnamen Futsal Pocari Sweat X AFP Sumsel.</li>
-                        <li>Mengelola tim kepanitiaan untuk memastikan kelancaran acara.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="item-title">Event Crew</div>
-                <span class="item-subtitle">Endless Creative</span>
-                <span class="item-date">2023 - 2024</span>
-                <div class="item-desc">
-                    <ul>
-                        <li>Crew event konser besar Palembang (Nyanyian Riang Gembira, Agrifest, Lawfest).</li>
-                        <li>Berpengalaman di berbagai posisi: Runner, Ticketing, Crowd Control, dan Backstage Crew.</li>
+                        <li>Menjadi Ketua Pelaksana Event Futsal Tournament Pocari Sweat X AFP Sumatera Selatan.</li>
+                        <li>Mengelola event secara keseluruhan dan memimpin tim untuk memastikan kelancaran acara.</li>
                     </ul>
                 </div>
             </div>
@@ -222,114 +195,95 @@
 
         <section>
             <h2><i class="fas fa-users"></i> Pengalaman Organisasi</h2>
+            
             <div class="timeline-item">
                 <div class="item-title">Wakil Ketua Umum 2</div>
-                <span class="item-subtitle">UKM Olahraga Polsri</span>
+                <span class="item-subtitle">UKM Olahraga Politeknik Negeri Sriwijaya</span>
                 <span class="item-date">Desember 2023 - Desember 2024</span>
                 <div class="item-desc">
-                    Mengelola jadwal latihan atlet dan menjadi Ketua Official Polsri dalam Porseni ke-XIV di Malang (Juara Umum ke-5).
+                    <ul>
+                        <li>Mengelola jadwal latihan atlet secara rutin serta berkoordinasi aktif dengan pihak lembaga dan pelatih.</li>
+                        <li>Menjadi Ketua Official Politeknik Negeri Sriwijaya dalam ajang Porseni ke-XIV di Politeknik Negeri Malang.</li>
+                        <li>Berhasil membawa tim menjadi Juara Umum ke-5 secara berturut-turut dalam ajang tersebut.</li>
+                    </ul>
                 </div>
             </div>
+
             <div class="timeline-item">
                 <div class="item-title">Wakil Ketua OSIS</div>
-                <span class="item-subtitle">OSIS SMA Negeri 16 Palembang</span>
+                <span class="item-subtitle">SMA Negeri 16 Palembang</span>
                 <span class="item-date">Agustus 2020 - Juli 2021</span>
                 <div class="item-desc">
-                    Mengelola kegiatan vaksinasi massal dan pengenalan siswa baru secara sistem online/hybrid.
+                    <ul>
+                        <li>Melakukan kegiatan Pengenalan Lingkungan Sekolah (MPLS) untuk siswa baru dengan sistem online.</li>
+                        <li>Mengelola kegiatan vaksinasi massal di sekolah, mencakup vaksinasi dosis 1, dosis 2, hingga booster 1.</li>
+                        <li>Mengelola struktur organisasi agar kegiatan tetap berjalan efektif secara hybrid (daring & luring) di masa pandemi.</li>
+                    </ul>
                 </div>
             </div>
         </section>
 
         <section>
-            <h2><i class="fas fa-certificate"></i> Sertifikasi Kompetensi</h2>
+            <h2><i class="fas fa-certificate"></i> Sertifikasi</h2>
+            <p style="margin-bottom: 20px; font-size: 0.9rem; color: red;">*Klik pada kotak sertifikat untuk melihat gambar asli.</p>
+            
             <div class="cert-grid">
                 
-                <div class="cert-card">
-                    <i class="fas fa-satellite-dish cert-icon"></i>
-                    <div class="cert-info">
-                        <h3>Teknisi Drive Tester</h3>
-                        <span class="cert-issuer">FGA - KOMDIGI (2025)</span>
+                <a href="sertifikat_python.jpg" target="_blank" class="cert-link">
+                    <div class="cert-card">
+                        <i class="fab fa-python cert-icon"></i>
+                        <div class="cert-info">
+                            <h3>Pemrograman Python</h3>
+                            <span class="cert-issuer">Dicoding Indonesia</span>
+                            <span class="click-hint">(Klik untuk lihat)</span>
+                        </div>
                     </div>
-                </div>
+                </a>
 
-                <div class="cert-card">
-                    <i class="fab fa-python cert-icon"></i>
-                    <div class="cert-info">
-                        <h3>Memulai Pemrograman Python</h3>
-                        <span class="cert-issuer">Dicoding Indonesia</span>
+                <a href="sertifikat_data.jpg" target="_blank" class="cert-link">
+                    <div class="cert-card">
+                        <i class="fas fa-database cert-icon"></i>
+                        <div class="cert-info">
+                            <h3>Data Science & SQL</h3>
+                            <span class="cert-issuer">Dicoding Indonesia</span>
+                            <span class="click-hint">(Klik untuk lihat)</span>
+                        </div>
                     </div>
-                </div>
+                </a>
 
-                <div class="cert-card">
-                    <i class="fas fa-database cert-icon"></i>
-                    <div class="cert-info">
-                        <h3>Belajar Dasar Data Science</h3>
-                        <span class="cert-issuer">Dicoding Indonesia</span>
+                <a href="sertifikat_ai.jpg" target="_blank" class="cert-link">
+                    <div class="cert-card">
+                        <i class="fas fa-robot cert-icon"></i>
+                        <div class="cert-info">
+                            <h3>Dasar Artificial Intelligence</h3>
+                            <span class="cert-issuer">Dicoding Indonesia</span>
+                            <span class="click-hint">(Klik untuk lihat)</span>
+                        </div>
                     </div>
-                </div>
+                </a>
 
-                <div class="cert-card">
-                    <i class="fas fa-table cert-icon"></i>
-                    <div class="cert-info">
-                        <h3>Belajar Dasar SQL</h3>
-                        <span class="cert-issuer">Dicoding Indonesia</span>
+                <a href="sertifikat_fga.jpg" target="_blank" class="cert-link">
+                    <div class="cert-card">
+                        <i class="fas fa-network-wired cert-icon"></i>
+                        <div class="cert-info">
+                            <h3>Teknisi Drive Tester</h3>
+                            <span class="cert-issuer">FGA - KOMDIGI</span>
+                            <span class="click-hint">(Klik untuk lihat)</span>
+                        </div>
                     </div>
-                </div>
+                </a>
 
-                <div class="cert-card">
-                    <i class="fas fa-robot cert-icon"></i>
-                    <div class="cert-info">
-                        <h3>Dasar Artificial Intelligence</h3>
-                        <span class="cert-issuer">Dicoding Indonesia</span>
+                 <a href="sertifikat_azure.jpg" target="_blank" class="cert-link">
+                    <div class="cert-card">
+                        <i class="fab fa-microsoft cert-icon"></i>
+                        <div class="cert-info">
+                            <h3>Rekayasa Prompt (Azure)</h3>
+                            <span class="cert-issuer">Microsoft & KOMDIGI</span>
+                            <span class="click-hint">(Klik untuk lihat)</span>
+                        </div>
                     </div>
-                </div>
+                </a>
 
-                <div class="cert-card">
-                    <i class="fas fa-brain cert-icon"></i>
-                    <div class="cert-info">
-                        <h3>AI Engineer For Milenial</h3>
-                        <span class="cert-issuer">DTS - KOMDIGI</span>
-                    </div>
-                </div>
-
-                <div class="cert-card">
-                    <i class="fab fa-microsoft cert-icon"></i>
-                    <div class="cert-info">
-                        <h3>Rekayasa Prompt (Azure OpenAI)</h3>
-                        <span class="cert-issuer">Microsoft & KOMDIGI</span>
-                    </div>
-                </div>
-
-                 <div class="cert-card">
-                    <i class="fas fa-lightbulb cert-icon"></i>
-                    <div class="cert-info">
-                        <h3>Pengembangan Produk AI</h3>
-                        <span class="cert-issuer">DTS - KOMDIGI</span>
-                    </div>
-                </div>
-
-                <div class="cert-card">
-                    <i class="fas fa-shield-alt cert-icon"></i>
-                    <div class="cert-info">
-                        <h3>Keamanan Digital</h3>
-                        <span class="cert-issuer">DTS - KOMDIGI</span>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <section>
-            <h2><i class="fas fa-tools"></i> Keahlian</h2>
-            <div class="skill-container">
-                <span class="skill-tag">📡 Instalasi Jaringan WiFi</span>
-                <span class="skill-tag">📶 Fiber Optik (FTTH)</span>
-                <span class="skill-tag">🐍 Python Basic</span>
-                <span class="skill-tag">📊 Data Science & SQL</span>
-                <span class="skill-tag">🤖 Prompt Engineering</span>
-                <span class="skill-tag">👥 Event Management</span>
-                <span class="skill-tag">🗣️ Leadership & Communication</span>
-                <span class="skill-tag">🧩 Problem Solving</span>
             </div>
         </section>
 
