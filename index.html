@@ -10,13 +10,13 @@
     <style>
         :root {
             --primary: #2563eb;      /* Warna Biru Utama */
-            --accent: #f59e0b;       /* Warna Oranye Aksen */
+            --accent: #f59e0b;       /* Warna Oranye */
             --dark: #1e293b;
             --light: #f8fafc;
             --gradient: linear-gradient(135deg, #2563eb 0%, #9333ea 100%);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Poppins', sans-serif;
@@ -25,21 +25,10 @@
             overflow-x: hidden;
         }
 
-        /* --- ANIMASI DASAR --- */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-        .visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* --- HERO SECTION (BAGIAN ATAS) --- */
+        /* --- HEADER / HERO SECTION --- */
         header {
-            background: var(--light);
-            min-height: 100vh;
+            background: white;
+            min-height: 90vh; /* Tinggi hampir setara layar */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -48,25 +37,28 @@
             padding: 20px;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            /* Animasi Aman saat Loading */
+            animation: slideUp 1s ease-out;
         }
 
-        /* Hiasan Latar Belakang */
+        /* Animasi Masuk yang Aman (CSS Only) */
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hiasan Latar Belakang Bulat Pudar */
         .blob {
             position: absolute;
-            width: 500px;
-            height: 500px;
+            width: 400px;
+            height: 400px;
             background: var(--gradient);
-            filter: blur(80px);
-            opacity: 0.1;
+            filter: blur(90px);
+            opacity: 0.15;
             border-radius: 50%;
             z-index: 0;
             animation: float 6s infinite ease-in-out;
-        }
-
-        .profile-container {
-            position: relative;
-            z-index: 2;
-            margin-bottom: 20px;
         }
 
         .profile-img {
@@ -75,23 +67,27 @@
             border-radius: 50%;
             object-fit: cover;
             border: 5px solid white;
-            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.2);
+            position: relative;
+            z-index: 2;
             transition: transform 0.3s;
+            margin-bottom: 20px;
         }
         .profile-img:hover { transform: scale(1.05) rotate(3deg); }
 
         h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 10px;
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 5px;
             background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             position: relative;
             z-index: 2;
+            line-height: 1.2;
         }
 
-        .typing-text {
+        .role-text {
             font-size: 1.2rem;
             color: #64748b;
             font-weight: 600;
@@ -111,7 +107,7 @@
         }
 
         .btn {
-            padding: 12px 25px;
+            padding: 12px 28px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
@@ -119,66 +115,64 @@
             align-items: center;
             gap: 10px;
             transition: all 0.3s;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border: none;
         }
 
+        /* Warna Tombol Kustom */
         .btn-linkedin { background: #0077b5; color: white; }
         .btn-email { background: #ea4335; color: white; }
+        /* Gradient Instagram */
         .btn-ig { 
             background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
             color: white; 
         }
 
-        .btn:hover { transform: translateY(-5px); box-shadow: 0 10px 15px rgba(0,0,0,0.2); }
+        .btn:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2); 
+        }
 
-        /* --- CONTAINER ISI --- */
+        /* --- CONTAINER UTAMA --- */
         .container {
             max-width: 1000px;
             margin: 0 auto;
             padding: 50px 20px;
+            /* Animasi muncul pelan */
+            animation: slideUp 1.2s ease-out;
         }
 
         section {
             background: white;
             padding: 40px;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
             margin-bottom: 40px;
-            border: 1px solid rgba(255,255,255,0.5);
+            border: 1px solid rgba(255,255,255,0.8);
         }
 
         h2 {
             font-size: 1.8rem;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            color: var(--dark);
         }
         h2 i { color: var(--primary); }
 
-        /* --- TIMELINE PENGALAMAN --- */
+        /* --- PENGALAMAN KERJA --- */
         .job-item {
             border-left: 4px solid var(--primary);
-            padding-left: 20px;
-            margin-bottom: 30px;
+            padding-left: 25px;
+            margin-bottom: 20px;
             position: relative;
         }
-        .job-item::before {
-            content: '';
-            position: absolute;
-            left: -12px;
-            top: 0;
-            width: 20px;
-            height: 20px;
-            background: white;
-            border: 4px solid var(--primary);
-            border-radius: 50%;
-        }
-        .job-title { font-size: 1.3rem; font-weight: 700; }
-        .company { color: var(--primary); font-weight: 600; }
-        .date { font-size: 0.9rem; color: #94a3b8; margin-bottom: 10px; display: block; }
+        .job-title { font-size: 1.3rem; font-weight: 700; color: var(--dark); }
+        .company { color: var(--primary); font-weight: 600; margin-bottom: 5px; display: block;}
+        .date { font-size: 0.9rem; color: #94a3b8; margin-bottom: 10px; display: block; font-style: italic;}
 
-        /* --- GRID SERTIFIKAT --- */
+        /* --- SERTIFIKAT GRID --- */
         .cert-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -188,48 +182,52 @@
         .cert-card {
             background: #fff;
             border: 1px solid #e2e8f0;
-            padding: 20px;
+            padding: 25px;
             border-radius: 15px;
             transition: all 0.3s ease;
-            cursor: default;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
         }
+        /* Efek Hover di Kartu */
         .cert-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.1);
             border-color: var(--primary);
         }
-        .cert-icon { font-size: 2rem; color: var(--primary); margin-bottom: 15px; }
-        .cert-title { font-weight: 700; margin-bottom: 5px; display: block; }
-        .cert-issuer { font-size: 0.85rem; color: #64748b; background: #f1f5f9; padding: 3px 10px; border-radius: 20px; }
+        .cert-icon { font-size: 2rem; color: var(--primary); margin-top: 5px; }
+        .cert-info h3 { font-size: 1rem; margin: 0 0 5px 0; font-weight: 700; }
+        .cert-issuer { font-size: 0.8rem; color: #64748b; background: #f1f5f9; padding: 2px 8px; border-radius: 4px; }
 
         /* --- SKILL TAGS --- */
         .skill-container { display: flex; flex-wrap: wrap; gap: 10px; }
         .skill-tag {
             background: white;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #cbd5e1;
             padding: 8px 20px;
             border-radius: 50px;
             font-weight: 500;
+            color: #334155;
             transition: 0.3s;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
         .skill-tag:hover {
             background: var(--primary);
             color: white;
+            border-color: var(--primary);
             transform: scale(1.1);
         }
 
         /* Footer */
-        footer { text-align: center; padding: 40px; color: #64748b; font-size: 0.9rem; }
-
-        /* Mobile Responsive */
+        footer { text-align: center; padding: 40px 20px; color: #94a3b8; font-size: 0.9rem; }
+        
+        /* Responsif HP */
         @media (max-width: 600px) {
             h1 { font-size: 2rem; }
-            .blob { display: none; } /* Matikan efek berat di HP */
             section { padding: 25px; }
+            .blob { display: none; } /* Matikan background berat di HP */
         }
 
-        /* Animasi Float Background */
+        /* Animasi Background Melayang */
         @keyframes float {
             0% { transform: translate(0, 0); }
             50% { transform: translate(20px, 40px); }
@@ -243,14 +241,12 @@
         <div class="blob" style="top: -100px; left: -100px;"></div>
         <div class="blob" style="bottom: -100px; right: -100px; background: #f59e0b;"></div>
 
-        <div class="profile-container fade-in">
-            <img src="foto.jpg" alt="Ridwan" class="profile-img">
-        </div>
+        <img src="foto.jpg" alt="Ridwan" class="profile-img">
 
-        <h1 class="fade-in">Muhammad Ridwan</h1>
-        <div class="typing-text fade-in">Project Admin | Data Enthusiast | Tech Learner</div>
+        <h1>Muhammad Ridwan</h1>
+        <div class="role-text">Project Admin | Data Enthusiast | Tech Learner</div>
         
-        <div class="social-buttons fade-in">
+        <div class="social-buttons">
             <a href="https://www.instagram.com/rdwn.xz/" target="_blank" class="btn btn-ig">
                 <i class="fab fa-instagram"></i> Instagram
             </a>
@@ -265,52 +261,34 @@
 
     <div class="container">
         
-        <section class="fade-in">
+        <section>
             <h2><i class="fas fa-user-circle"></i> Tentang Saya</h2>
             <p>
-                Halo! Saya adalah seorang profesional di bidang <strong>Project Administration</strong> di Telkom Akses Regional Palembang. 
-                Selain mengelola data operasional, saya memiliki passion besar dalam dunia teknologi, khususnya 
-                <strong>Python, Data Science, dan AI</strong>. Saya terus belajar untuk menggabungkan efisiensi administrasi dengan kekuatan data.
+                Halo! Saya adalah seorang profesional administratif yang saat ini berkarir sebagai <strong>Project Admin</strong> di Telkom Akses Regional Palembang. 
+                Saya memiliki ketertarikan yang mendalam untuk menggabungkan dunia operasional dengan teknologi data modern seperti 
+                <strong>Python, Machine Learning, dan Automasi Spreadsheet</strong> untuk menciptakan efisiensi kerja yang lebih baik.
             </p>
         </section>
 
-        <section class="fade-in">
+        <section>
             <h2><i class="fas fa-briefcase"></i> Pengalaman Kerja</h2>
             <div class="job-item">
                 <div class="job-title">Project Admin & Support (Unit Konstruksi)</div>
-                <div class="company">PT. Telkom Akses - Regional Palembang</div>
-                <span class="date"><i class="far fa-calendar-alt"></i> September 2025 - Sekarang</span>
-                <p style="margin-top: 10px;">
-                    Mengelola validasi dokumen proyek, input data harian menggunakan Excel & Spreadsheet, serta memastikan kelancaran komunikasi 
-                    tim lapangan (Support) demi tercapainya target operasional perusahaan.
+                <span class="company">PT. Telkom Akses - Regional Palembang</span>
+                <span class="date">September 2025 - Sekarang</span>
+                <p>
+                    Bertanggung jawab penuh atas validasi data proyek, input laporan harian (Excel/GSheets), 
+                    serta menjadi jembatan komunikasi (Support) antara manajemen dan tim lapangan.
                 </p>
             </div>
         </section>
 
-        <section class="fade-in">
+        <section>
             <h2><i class="fas fa-certificate"></i> Sertifikasi & Lisensi</h2>
             <div class="cert-grid">
                 
                 <div class="cert-card">
                     <i class="fas fa-code cert-icon"></i>
-                    <span class="cert-title">Pemrograman Python</span>
-                    <span class="cert-issuer">Dicoding Indonesia</span>
-                </div>
-
-                <div class="cert-card">
-                    <i class="fas fa-database cert-icon"></i>
-                    <span class="cert-title">Data Science & SQL</span>
-                    <span class="cert-issuer">Dicoding Indonesia</span>
-                </div>
-
-                <div class="cert-card">
-                    <i class="fas fa-robot cert-icon"></i>
-                    <span class="cert-title">Dasar Artificial Intelligence</span>
-                    <span class="cert-issuer">Dicoding Indonesia</span>
-                </div>
-
-                <div class="cert-card">
-                    <i class="fas fa-network-wired cert-icon"></i>
-                    <span class="cert-title">Teknisi Drive Tester</span>
-                    <span class="cert-issuer">FGA - KOMDIGI</span>
-                </div>
+                    <div class="cert-info">
+                        <h3>Pemrograman Python</h3>
+                        <span class="
