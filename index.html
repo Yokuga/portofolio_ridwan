@@ -55,13 +55,14 @@
             width: 200px; height: 200px; border-radius: 50%; object-fit: cover;
             border: 4px solid var(--primary);
             box-shadow: 0 0 30px rgba(14, 165, 233, 0.5);
-            margin-bottom: 25px;
+            margin-bottom: 20px; /* Jarak ke nama */
             animation: float 6s ease-in-out infinite;
         }
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
-        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 10px; }
-        h1 span { color: var(--primary); }
+        
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 10px; color: var(--text-light); }
         .typing-container { font-size: 1.2rem; color: var(--text-gray); margin-bottom: 30px; min-height: 30px; }
+        
         .social-buttons { display: flex; gap: 15px; margin-top: 20px; flex-wrap: wrap; justify-content: center;}
         .social-icon {
             width: 45px; height: 45px; border-radius: 50%; border: 2px solid var(--primary);
@@ -80,7 +81,7 @@
             content: ''; position: absolute; bottom: -10px; left: 0; width: 100%; height: 3px; background: var(--primary);
         }
 
-        /* --- SLIDESHOW GALLERY --- */
+        /* --- SLIDESHOW GALLERY (PERBAIKAN ZOOM) --- */
         .slideshow-container {
             position: relative;
             max-width: 800px;
@@ -89,21 +90,25 @@
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             border: 2px solid #334155;
-            background-color: #000;
+            background-color: #000; /* Latar Hitam Biar Rapi */
         }
         .slide { 
             display: none; 
             width: 100%; 
-            height: 450px; 
-            object-fit: contain; 
-            background-color: #000;
+            height: 450px; /* Tinggi Tetap Desktop */
+            position: relative;
+        }
+        .slide img {
+            width: 100%; 
+            height: 100%; 
+            object-fit: contain; /* INI KUNCINYA: Agar foto PAS (tidak zoom/crop) */
         }
         .slide.active { display: block; animation: fade 1s; }
         @keyframes fade { from {opacity: .6} to {opacity: 1} }
         
         .caption-text {
-            color: #f2f2f2; font-size: 15px; padding: 15px; position: absolute; bottom: 0;
-            width: 100%; text-align: center; background: rgba(0, 0, 0, 0.7);
+            color: #f2f2f2; font-size: 14px; padding: 10px; position: absolute; bottom: 0;
+            width: 100%; text-align: center; background: rgba(0, 0, 0, 0.8);
         }
         .prev, .next {
             cursor: pointer; position: absolute; top: 50%; width: auto;
@@ -114,7 +119,7 @@
         .next { right: 0; border-radius: 3px 0 0 3px; }
         .prev:hover, .next:hover { background-color: var(--primary); }
 
-        /* --- PENGALAMAN KERJA --- */
+        /* --- PENGALAMAN KERJA (LENGKAP) --- */
         .timeline-box {
             background: var(--card-bg); padding: 30px; border-radius: 15px;
             margin-bottom: 30px; border-left: 5px solid var(--primary);
@@ -158,14 +163,6 @@
         .btn-org:hover { background: var(--accent); }
         .btn-sem:hover { background: var(--success); }
 
-        /* --- KEAHLIAN --- */
-        .skill-container { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
-        .skill-tag {
-            background: var(--card-bg); border: 1px solid #334155; padding: 10px 25px;
-            border-radius: 50px; color: var(--text-light); font-size: 0.9rem; transition: 0.3s;
-        }
-        .skill-tag:hover { background: var(--primary); border-color: var(--primary); transform: scale(1.05); }
-
         /* --- KONTAK --- */
         .contact-cta { text-align: center; margin-bottom: 40px; }
         .cta-text { font-size: 1.1rem; color: #cbd5e1; margin-bottom: 20px; }
@@ -192,7 +189,7 @@
             .nav-links.active { display: flex; }
             h1 { font-size: 2rem; }
             .btn-send-group { flex-direction: column; }
-            .slide { height: 250px; }
+            .slide { height: 250px; } /* Tinggi Galeri di HP */
         }
     </style>
 </head>
@@ -203,7 +200,7 @@
         <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
         <ul class="nav-links" id="navMenu">
             <li><a href="#home" onclick="toggleMenu()">Beranda</a></li>
-            <li><a href="#about" onclick="toggleMenu()">Tentang Saya</a></li>
+            <li><a href="#about" onclick="toggleMenu()">Tentang</a></li>
             <li><a href="#gallery" onclick="toggleMenu()">Galeri</a></li>
             <li><a href="#experience" onclick="toggleMenu()">Pengalaman</a></li>
             <li><a href="#certificates" onclick="toggleMenu()">Sertifikat</a></li>
@@ -228,7 +225,10 @@
         <p style="text-align: justify; max-width: 850px; margin: 0 auto; line-height: 1.8; color: #cbd5e1;">
             Halo! Saya <strong>Muhammad Ridwan</strong>, seorang profesional yang antusias menjembatani dunia <strong>Teknik Telekomunikasi</strong> dan administrasi proyek. Saat ini, saya berdedikasi di <strong>PT. Telkom Akses</strong> untuk memastikan infrastruktur jaringan berjalan optimal melalui pengelolaan data yang presisi dan koordinasi lapangan yang efektif.
             <br><br>
-            <strong>Visi saya</strong> adalah menjadi ahli yang mampu mengintegrasikan operasional teknis dengan analisis data tingkat lanjut (Data Science & AI). Saya percaya bahwa data yang akurat adalah kunci efisiensi infrastruktur masa depan. Saya selalu bersemangat untuk terlibat dalam proyek yang menantang pemecahan masalah kreatif, baik dalam teknologi jaringan maupun manajemen event.
+            <strong>Visi & Motivasi:</strong><br>
+            Saya percaya bahwa masa depan industri telekomunikasi terletak pada perpaduan infrastruktur fisik yang kuat dan analisis data cerdas. Oleh karena itu, saya aktif mengembangkan keahlian di bidang <strong>Data Science & AI</strong> untuk menciptakan efisiensi kerja yang lebih baik.
+            <br><br>
+            Saya selalu bersemangat untuk terlibat dalam proyek yang menantang pemecahan masalah kreatif, baik dalam pengoptimalan jaringan, manajemen tim event, maupun inovasi teknologi.
         </p>
     </div>
 
@@ -371,7 +371,7 @@
         <div class="cert-grid">
             <div class="cert-card">
                 <div class="cert-header"><i class="fab fa-python"></i><div><span class="cert-title">Pemrograman Python</span><span class="cert-issuer">Dicoding</span></div></div>
-                <div class="cert-pages"><a href="pemograman dengan pyhton.jpg" target="_blank" class="page-btn">Sertifikat Utama</a><a href="pemograman dengan pyhton (2).jpg" target="_blank" class="page-btn">Daftar Nilai</a><a href="pemograman dengan pyhton (3).jpg" target="_blank" class="page-btn">Silabus</a></div>
+                <div class="cert-pages"><a href="pemograman dengan pyhton.jpg" target="_blank" class="page-btn">Sertifikat Utama</a><a href="pemograman dengan pyhton (2).jpg" target="_blank" class="page-btn">Daftar Nilai</a><a href="pemograman dengan pyhton (3).jpg" target="_blank" class="page-btn">Silabus Materi</a></div>
             </div>
             <div class="cert-card">
                 <div class="cert-header"><i class="fas fa-network-wired"></i><div><span class="cert-title">Teknisi Drive Tester</span><span class="cert-issuer">FGA - KOMDIGI</span></div></div>
@@ -379,7 +379,7 @@
             </div>
             <div class="cert-card">
                 <div class="cert-header"><i class="fas fa-chart-bar"></i><div><span class="cert-title">Data Science Basics</span><span class="cert-issuer">Dicoding</span></div></div>
-                <div class="cert-pages"><a href="belajar data science.jpg" target="_blank" class="page-btn">Sertifikat</a><a href="belajar data science (2).jpg" target="_blank" class="page-btn">Materi 1</a><a href="belajar data science (3).jpg" target="_blank" class="page-btn">Materi 2</a><a href="belajar data science (4).jpg" target="_blank" class="page-btn">Materi 3</a></div>
+                <div class="cert-pages"><a href="belajar data science.jpg" target="_blank" class="page-btn">Sertifikat</a><a href="belajar data science (2).jpg" target="_blank" class="page-btn">Modul 1</a><a href="belajar data science (3).jpg" target="_blank" class="page-btn">Modul 2</a><a href="belajar data science (4).jpg" target="_blank" class="page-btn">Modul 3</a></div>
             </div>
             <div class="cert-card">
                 <div class="cert-header"><i class="fas fa-brain"></i><div><span class="cert-title">AI Engineer</span><span class="cert-issuer">DTS - KOMDIGI</span></div></div>
@@ -391,15 +391,15 @@
         <div class="cert-grid">
             <div class="cert-card">
                 <div class="cert-header"><i class="fas fa-users org-icon"></i><div><span class="cert-title">Pengurus UKM Olahraga</span><span class="cert-issuer">Politeknik Negeri Sriwijaya</span></div></div>
-                <div class="cert-pages"><a href="ukm 2023_page-0001.jpg" target="_blank" class="page-btn btn-org">SK 2023</a><a href="ukm 2024.png" target="_blank" class="page-btn btn-org">SK 2024</a></div>
+                <div class="cert-pages"><a href="ukm 2023_page-0001.jpg" target="_blank" class="page-btn btn-org">SK Kepengurusan 2023</a><a href="ukm 2024.png" target="_blank" class="page-btn btn-org">SK Kepengurusan 2024</a></div>
             </div>
             <div class="cert-card">
                 <div class="cert-header"><i class="fas fa-medal org-icon"></i><div><span class="cert-title">Prestasi Atlet Porseni</span><span class="cert-issuer">Kejuaraan Olahraga</span></div></div>
-                <div class="cert-pages"><a href="atlet 2023'_page-0001.jpg" target="_blank" class="page-btn btn-org">Sertifikat 1</a><a href="atlet 2023'.png" target="_blank" class="page-btn btn-org">Sertifikat 2</a></div>
+                <div class="cert-pages"><a href="atlet 2023'_page-0001.jpg" target="_blank" class="page-btn btn-org">Sertifikat Atlet</a><a href="atlet 2023'.png" target="_blank" class="page-btn btn-org">Piagam Penghargaan</a></div>
             </div>
             <div class="cert-card">
                 <div class="cert-header"><i class="fas fa-clipboard-list org-icon"></i><div><span class="cert-title">Kepanitiaan Event</span><span class="cert-issuer">Event Organizer</span></div></div>
-                <div class="cert-pages"><a href="sevent panitia_page-0001.jpg" target="_blank" class="page-btn btn-org">Sevent</a><a href="futsal.png" target="_blank" class="page-btn btn-org">Futsal</a><a href="psc.png" target="_blank" class="page-btn btn-org">PSC</a><a href="ml.jpg" target="_blank" class="page-btn btn-org">MLBB</a></div>
+                <div class="cert-pages"><a href="sevent panitia_page-0001.jpg" target="_blank" class="page-btn btn-org">Panitia Sevent</a><a href="futsal.png" target="_blank" class="page-btn btn-org">Event Futsal</a><a href="psc.png" target="_blank" class="page-btn btn-org">Event PSC</a><a href="ml.jpg" target="_blank" class="page-btn btn-org">Turnamen MLBB</a></div>
             </div>
         </div>
 
@@ -415,7 +415,7 @@
             </div>
             <div class="cert-card">
                 <div class="cert-header"><i class="fas fa-industry sem-icon"></i><div><span class="cert-title">Kunjungan Industri</span><span class="cert-issuer">Polsri</span></div></div>
-                <div class="cert-pages"><a href="kunjungan industri_page-0001.jpg" target="_blank" class="page-btn btn-sem">Lihat Dokumen</a></div>
+                <div class="cert-pages"><a href="kunjungan industri_page-0001.jpg" target="_blank" class="page-btn btn-sem">Dokumen Kunjungan</a></div>
             </div>
         </div>
     </div>
