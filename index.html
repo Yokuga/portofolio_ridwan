@@ -9,13 +9,13 @@
     
     <style>
         :root {
-            --primary: #0ea5e9;
-            --dark: #0f172a;
-            --card-bg: #1e293b;
-            --text-light: #f1f5f9;
-            --text-gray: #94a3b8;
-            --accent: #f59e0b;
-            --success: #10b981;
+            --primary: #0ea5e9;      /* Biru Cerah */
+            --dark: #0f172a;         /* Background Utama */
+            --card-bg: #1e293b;      /* Background Kartu */
+            --text-light: #f1f5f9;   /* Teks Putih */
+            --text-gray: #94a3b8;    /* Teks Abu-abu */
+            --accent: #f59e0b;       /* Warna Oranye */
+            --success: #10b981;      /* Warna Hijau */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
@@ -27,7 +27,7 @@
             overflow-x: hidden;
         }
 
-        /* --- NAVIGATION --- */
+        /* --- NAVIGASI --- */
         nav {
             position: fixed; top: 0; left: 0; width: 100%;
             background: rgba(15, 23, 42, 0.95);
@@ -45,7 +45,7 @@
         .nav-links a:hover { color: var(--primary); }
         .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: var(--text-light); }
 
-        /* --- HERO --- */
+        /* --- HERO SECTION --- */
         header {
             min-height: 100vh;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
@@ -80,7 +80,7 @@
             content: ''; position: absolute; bottom: -10px; left: 0; width: 100%; height: 3px; background: var(--primary);
         }
 
-        /* --- SLIDESHOW GALLERY (FIXED) --- */
+        /* --- SLIDESHOW GALLERY --- */
         .slideshow-container {
             position: relative;
             max-width: 800px;
@@ -89,31 +89,22 @@
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             border: 2px solid #334155;
-            background-color: #000; /* Latar belakang hitam agar foto fit */
+            background-color: #000;
         }
         .slide { 
             display: none; 
             width: 100%; 
-            height: 450px; /* Tinggi tetap agar tidak loncat-loncat */
-            object-fit: contain; /* AGAR FOTO TIDAK TERPOTONG */
+            height: 450px; 
+            object-fit: contain; 
             background-color: #000;
         }
         .slide.active { display: block; animation: fade 1s; }
         @keyframes fade { from {opacity: .6} to {opacity: 1} }
         
-        /* CAPTION TEXT */
         .caption-text {
-            color: #f2f2f2;
-            font-size: 15px;
-            padding: 15px;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            text-align: center;
-            background: rgba(0, 0, 0, 0.7); /* Background transparan */
+            color: #f2f2f2; font-size: 15px; padding: 15px; position: absolute; bottom: 0;
+            width: 100%; text-align: center; background: rgba(0, 0, 0, 0.7);
         }
-
-        /* Navigation Buttons */
         .prev, .next {
             cursor: pointer; position: absolute; top: 50%; width: auto;
             padding: 16px; margin-top: -22px; color: white; font-weight: bold;
@@ -123,7 +114,7 @@
         .next { right: 0; border-radius: 3px 0 0 3px; }
         .prev:hover, .next:hover { background-color: var(--primary); }
 
-        /* --- TIMELINE (FULL DESCRIPTION) --- */
+        /* --- PENGALAMAN KERJA --- */
         .timeline-box {
             background: var(--card-bg); padding: 30px; border-radius: 15px;
             margin-bottom: 30px; border-left: 5px solid var(--primary);
@@ -138,7 +129,7 @@
         .desc ul { padding-left: 20px; color: #cbd5e1; line-height: 1.8; font-size: 0.95rem; text-align: justify; }
         .desc li { margin-bottom: 8px; }
 
-        /* --- CERTIFICATES LAYOUT --- */
+        /* --- SERTIFIKAT --- */
         .cert-category-title {
             text-align: left; font-size: 1.5rem; color: var(--text-light);
             margin: 50px 0 25px 0; border-left: 5px solid var(--primary); padding-left: 15px;
@@ -160,14 +151,14 @@
         .cert-issuer { font-size: 0.8rem; color: var(--text-gray); background: rgba(255,255,255,0.05); padding: 3px 8px; border-radius: 4px; }
         .cert-pages { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); }
         .page-btn {
-            padding: 6px 12px; font-size: 0.75rem; background: rgba(255,255,255, 0.1);
-            color: white; text-decoration: none; border-radius: 5px; transition: 0.3s; font-weight: 600;
+            padding: 8px 12px; font-size: 0.75rem; background: rgba(255,255,255, 0.1);
+            color: white; text-decoration: none; border-radius: 5px; transition: 0.3s; font-weight: 600; flex-grow: 1; text-align: center;
         }
         .page-btn:hover { background: var(--primary); }
         .btn-org:hover { background: var(--accent); }
         .btn-sem:hover { background: var(--success); }
 
-        /* --- SKILLS --- */
+        /* --- KEAHLIAN --- */
         .skill-container { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
         .skill-tag {
             background: var(--card-bg); border: 1px solid #334155; padding: 10px 25px;
@@ -175,7 +166,7 @@
         }
         .skill-tag:hover { background: var(--primary); border-color: var(--primary); transform: scale(1.05); }
 
-        /* --- CONTACT & CTA --- */
+        /* --- KONTAK --- */
         .contact-cta { text-align: center; margin-bottom: 40px; }
         .cta-text { font-size: 1.1rem; color: #cbd5e1; margin-bottom: 20px; }
         .btn-download-cv {
@@ -201,7 +192,7 @@
             .nav-links.active { display: flex; }
             h1 { font-size: 2rem; }
             .btn-send-group { flex-direction: column; }
-            .slide { height: 250px; } /* Tinggi galeri di HP lebih kecil */
+            .slide { height: 250px; }
         }
     </style>
 </head>
@@ -211,19 +202,19 @@
         <div class="logo">Ridwan<span style="color:white;">.Dev</span></div>
         <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
         <ul class="nav-links" id="navMenu">
-            <li><a href="#home" onclick="toggleMenu()">Home</a></li>
-            <li><a href="#about" onclick="toggleMenu()">About</a></li>
-            <li><a href="#gallery" onclick="toggleMenu()">Gallery</a></li>
-            <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
-            <li><a href="#certificates" onclick="toggleMenu()">Certificates</a></li>
-            <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+            <li><a href="#home" onclick="toggleMenu()">Beranda</a></li>
+            <li><a href="#about" onclick="toggleMenu()">Tentang Saya</a></li>
+            <li><a href="#gallery" onclick="toggleMenu()">Galeri</a></li>
+            <li><a href="#experience" onclick="toggleMenu()">Pengalaman</a></li>
+            <li><a href="#certificates" onclick="toggleMenu()">Sertifikat</a></li>
+            <li><a href="#contact" onclick="toggleMenu()">Kontak</a></li>
         </ul>
     </nav>
 
     <header id="home">
         <img src="ridwan_formal.jpg" alt="Muhammad Ridwan" class="profile-img">
-        <h1>Hi, I'm <span>Ridwan</span></h1>
-        <div class="typing-container">I am a <span class="typing-text"></span></div>
+        <h1>Muhammad Ridwan</h1>
+        <div class="typing-container">Saya seorang <span class="typing-text"></span></div>
         <div class="social-buttons">
             <a href="https://wa.me/62895620677793" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
             <a href="https://www.instagram.com/rdwn.xz/" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
@@ -233,57 +224,50 @@
     </header>
 
     <div class="container" id="about">
-        <h2>About Me</h2>
+        <h2>Tentang Saya</h2>
         <p style="text-align: justify; max-width: 850px; margin: 0 auto; line-height: 1.8; color: #cbd5e1;">
-            Lulusan baru <strong>D3 Teknik Telekomunikasi</strong> dari Politeknik Negeri Sriwijaya.
-            Saat ini bekerja sebagai <strong>Project Admin & Support</strong> di PT. Telkom Akses Regional Palembang.
-            Saya memiliki antusiasme tinggi pada teknologi jaringan dan Fiber Optik (FTTH) serta pengalaman luas dalam manajemen acara (Event Organizer).
+            Halo! Saya <strong>Muhammad Ridwan</strong>, seorang profesional yang antusias menjembatani dunia <strong>Teknik Telekomunikasi</strong> dan administrasi proyek. Saat ini, saya berdedikasi di <strong>PT. Telkom Akses</strong> untuk memastikan infrastruktur jaringan berjalan optimal melalui pengelolaan data yang presisi dan koordinasi lapangan yang efektif.
+            <br><br>
+            <strong>Visi saya</strong> adalah menjadi ahli yang mampu mengintegrasikan operasional teknis dengan analisis data tingkat lanjut (Data Science & AI). Saya percaya bahwa data yang akurat adalah kunci efisiensi infrastruktur masa depan. Saya selalu bersemangat untuk terlibat dalam proyek yang menantang pemecahan masalah kreatif, baik dalam teknologi jaringan maupun manajemen event.
         </p>
     </div>
 
     <div class="container" id="gallery">
-        <h2>My Gallery</h2>
-        <p style="text-align: center; margin-bottom: 20px; color: var(--text-gray);">Dokumentasi kegiatan & sertifikat prestasi.</p>
+        <h2>Galeri Dokumentasi</h2>
+        <p style="text-align: center; margin-bottom: 20px; color: var(--text-gray);">Kumpulan momen kegiatan, proyek, dan prestasi.</p>
         <div class="slideshow-container">
             
             <div class="slide active">
-                <img src="galeri.jpg" style="width:100%; height:100%; object-fit:contain;">
+                <img src="galeri.jpg">
                 <div class="caption-text">Sertifikat Organisasi & Kejuaraan</div>
             </div>
-
             <div class="slide">
-                <img src="galeri (2).jpg" style="width:100%; height:100%; object-fit:contain;">
-                <div class="caption-text">Sertifikat Seminar & Pelatihan</div>
+                <img src="galeri (2).jpg">
+                <div class="caption-text">Sertifikat Seminar & Workshop Teknis</div>
             </div>
-
             <div class="slide">
-                <img src="galeri (3).jpg" style="width:100%; height:100%; object-fit:contain;">
-                <div class="caption-text">Dokumentasi Kegiatan 1</div>
+                <img src="galeri (3).jpg">
+                <div class="caption-text">Dokumentasi Kegiatan Organisasi 1</div>
             </div>
-
             <div class="slide">
-                <img src="galeri (4).jpg" style="width:100%; height:100%; object-fit:contain;">
-                <div class="caption-text">Dokumentasi Kegiatan 2</div>
+                <img src="galeri (4).jpg">
+                <div class="caption-text">Dokumentasi Kegiatan Organisasi 2</div>
             </div>
-
             <div class="slide">
-                <img src="galeri (5).jpg" style="width:100%; height:100%; object-fit:contain;">
-                <div class="caption-text">Dokumentasi Kegiatan 3</div>
+                <img src="galeri (5).jpg">
+                <div class="caption-text">Dokumentasi Lapangan / Proyek 1</div>
             </div>
-
             <div class="slide">
-                <img src="galeri (6).jpg" style="width:100%; height:100%; object-fit:contain;">
-                <div class="caption-text">Dokumentasi Kegiatan 4</div>
+                <img src="galeri (6).jpg">
+                <div class="caption-text">Dokumentasi Lapangan / Proyek 2</div>
             </div>
-
              <div class="slide">
-                <img src="galeri (7).jpg" style="width:100%; height:100%; object-fit:contain;">
-                <div class="caption-text">Dokumentasi Kegiatan 5</div>
+                <img src="galeri (7).jpg">
+                <div class="caption-text">Dokumentasi Lapangan / Proyek 3</div>
             </div>
-
              <div class="slide">
-                <img src="galeri (8).jpg" style="width:100%; height:100%; object-fit:contain;">
-                <div class="caption-text">Dokumentasi Kegiatan 6</div>
+                <img src="galeri (8).jpg">
+                <div class="caption-text">Dokumentasi Lapangan / Proyek 4</div>
             </div>
 
             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -292,7 +276,7 @@
     </div>
 
     <div class="container" id="experience">
-        <h2>Experience</h2>
+        <h2>Pengalaman Kerja</h2>
         
         <div class="timeline-box">
             <div class="role">Project Admin & Support</div>
@@ -300,8 +284,8 @@
             <div class="desc">
                 <ul>
                     <li>Bertanggung jawab atas administrasi harian proyek konstruksi di Unit Konstruksi Regional Palembang.</li>
-                    <li>Mengelola dan memvalidasi data proyek menggunakan Excel & Google Spreadsheet.</li>
-                    <li>Memberikan dukungan (support) komunikasi antara tim manajemen dan tim lapangan agar target operasional tercapai.</li>
+                    <li>Mengelola dan memvalidasi data proyek menggunakan Excel & Google Spreadsheet untuk memastikan akurasi pelaporan.</li>
+                    <li>Memberikan dukungan (support) komunikasi intensif antara tim manajemen dan tim lapangan agar target operasional tercapai tepat waktu.</li>
                 </ul>
             </div>
         </div>
@@ -312,9 +296,9 @@
             <div class="desc">
                 <ul>
                     <li>Memonitoring keadaan WiFi Palembang zona Sumatera Selatan dengan berbasis website internal perusahaan.</li>
-                    <li>Melaporkan WiFi pelanggan yang mengalami gangguan (lost) agar bisa segera dikerjakan teknisi.</li>
+                    <li>Melaporkan WiFi pelanggan yang mengalami gangguan (lost) agar bisa segera dikerjakan teknisi lapangan.</li>
                     <li>Melakukan pelatihan Quality Control untuk perangkat pelanggan yang akan didistribusikan.</li>
-                    <li>Melakukan pelatihan dan praktek langsung instalasi jaringan pelanggan.</li>
+                    <li>Melakukan pelatihan dan praktek langsung instalasi jaringan pelanggan (Last Mile).</li>
                 </ul>
             </div>
         </div>
@@ -324,8 +308,8 @@
             <span class="company">Media Comunication Indonesia | 2024 - 2025</span>
             <div class="desc">
                 <ul>
-                    <li>Mengelola Event Corporate seperti HUT BPJS Ketenagakerjaan, BSI Byond, dan lainnya.</li>
-                    <li>Bekerja sama secara team untuk memenuhi kebutuhan client.</li>
+                    <li>Mengelola Event Corporate berskala besar seperti HUT BPJS Ketenagakerjaan, BSI Byond, dan lainnya.</li>
+                    <li>Bekerja sama secara solid dalam tim untuk memenuhi kebutuhan klien secara profesional.</li>
                 </ul>
             </div>
         </div>
@@ -335,8 +319,8 @@
             <span class="company">Pocari Sweat Palembang | 2023 - 2024</span>
             <div class="desc">
                 <ul>
-                    <li>Menjadi Ketua Pelaksana Event Futsal tournament Pocari Sweat X AFP Sumatera Selatan.</li>
-                    <li>Mengelola event dan team untuk berjalannya Event tersebut.</li>
+                    <li>Menjadi Ketua Pelaksana Event Futsal Tournament Pocari Sweat X AFP Sumatera Selatan.</li>
+                    <li>Memimpin dan mengelola seluruh divisi panitia untuk memastikan kelancaran acara dari awal hingga akhir.</li>
                 </ul>
             </div>
         </div>
@@ -346,16 +330,16 @@
             <span class="company">Endless Creative | 2023 - 2024</span>
             <div class="desc">
                 <ul>
-                    <li>Menjadi crew di event konser Palembang, seperti Nyanyian Riang Gembira (NRG) 2023, Menuju NRG 2023, Agrifest 2023, Lawfest2 2023, Nyanyian Riang Gembira (NRG) 2024.</li>
-                    <li>Disetiap event posisi selalu berubah dengan komposisi team yang berbeda, seperti runner, ticketing, crowd control, crew backstage.</li>
-                    <li>Bekerja sama secara tim, guna meningkatkan pelayanan yang baik.</li>
+                    <li>Menjadi crew di berbagai konser besar Palembang (Nyanyian Riang Gembira 2023/2024, Agrifest, Lawfest).</li>
+                    <li>Berperan aktif di berbagai posisi: Runner, Ticketing, Crowd Control, hingga Crew Backstage.</li>
+                    <li>Bekerja sama secara tim guna meningkatkan kualitas pelayanan event.</li>
                 </ul>
             </div>
         </div>
     </div>
 
     <div class="container">
-        <h2>Organization</h2>
+        <h2>Organisasi</h2>
         <div class="timeline-box org-box">
             <div class="role">Wakil Ketua Umum 2</div>
             <span class="company">UKM Olahraga Politeknik Negeri Sriwijaya | Des 2023 - Des 2024</span>
@@ -363,7 +347,7 @@
                 <ul>
                     <li>Mengelola jadwal latihan atlet, serta berkoordinasi dengan pihak lembaga dan pelatih.</li>
                     <li>Menjadi Ketua Official Politeknik Negeri Sriwijaya dalam Porseni ke-XIV di Politeknik Negeri Malang.</li>
-                    <li>Menjadi juara umum ke-5 secara berturut-turut.</li>
+                    <li>Berhasil membawa tim menjadi Juara Umum ke-5 secara berturut-turut.</li>
                 </ul>
             </div>
         </div>
@@ -372,34 +356,34 @@
             <span class="company">SMA Negeri 16 Palembang | Agt 2020 - Juli 2021</span>
             <div class="desc">
                 <ul>
-                    <li>Melakukan Pengenalan Siswa baru dengan sistem online.</li>
-                    <li>Mengelola kegiatan vaksinasi massal di sekolah (vaksinasi 1, 2, dan booster 1).</li>
-                    <li>Mengelola organisasi agar dapat berjalan secara hybrid.</li>
+                    <li>Melakukan Pengenalan Siswa baru dengan sistem online di masa pandemi.</li>
+                    <li>Mengelola kegiatan vaksinasi massal di sekolah (vaksinasi 1, 2, dan booster).</li>
+                    <li>Mengelola organisasi agar tetap berjalan efektif secara hybrid.</li>
                 </ul>
             </div>
         </div>
     </div>
 
     <div class="container" id="certificates">
-        <h2>Certificates & Documents</h2>
+        <h2>Sertifikasi & Dokumen</h2>
 
         <h3 class="cert-category-title">Pelatihan & Kompetensi Teknis</h3>
         <div class="cert-grid">
             <div class="cert-card">
                 <div class="cert-header"><i class="fab fa-python"></i><div><span class="cert-title">Pemrograman Python</span><span class="cert-issuer">Dicoding</span></div></div>
-                <div class="cert-pages"><a href="pemograman dengan pyhton.jpg" target="_blank" class="page-btn">Dok 1</a><a href="pemograman dengan pyhton (2).jpg" target="_blank" class="page-btn">Dok 2</a><a href="pemograman dengan pyhton (3).jpg" target="_blank" class="page-btn">Dok 3</a></div>
+                <div class="cert-pages"><a href="pemograman dengan pyhton.jpg" target="_blank" class="page-btn">Sertifikat Utama</a><a href="pemograman dengan pyhton (2).jpg" target="_blank" class="page-btn">Daftar Nilai</a><a href="pemograman dengan pyhton (3).jpg" target="_blank" class="page-btn">Silabus</a></div>
             </div>
             <div class="cert-card">
                 <div class="cert-header"><i class="fas fa-network-wired"></i><div><span class="cert-title">Teknisi Drive Tester</span><span class="cert-issuer">FGA - KOMDIGI</span></div></div>
-                <div class="cert-pages"><a href="TEKNISI DRIVER TESTER.jpg" target="_blank" class="page-btn">Dok 1</a><a href="TEKNISI DRIVER TESTER (2).jpg" target="_blank" class="page-btn">Dok 2</a></div>
+                <div class="cert-pages"><a href="TEKNISI DRIVER TESTER.jpg" target="_blank" class="page-btn">Sertifikat</a><a href="TEKNISI DRIVER TESTER (2).jpg" target="_blank" class="page-btn">Transkrip JP</a></div>
             </div>
             <div class="cert-card">
                 <div class="cert-header"><i class="fas fa-chart-bar"></i><div><span class="cert-title">Data Science Basics</span><span class="cert-issuer">Dicoding</span></div></div>
-                <div class="cert-pages"><a href="belajar data science.jpg" target="_blank" class="page-btn">1</a><a href="belajar data science (2).jpg" target="_blank" class="page-btn">2</a><a href="belajar data science (3).jpg" target="_blank" class="page-btn">3</a><a href="belajar data science (4).jpg" target="_blank" class="page-btn">4</a></div>
+                <div class="cert-pages"><a href="belajar data science.jpg" target="_blank" class="page-btn">Sertifikat</a><a href="belajar data science (2).jpg" target="_blank" class="page-btn">Materi 1</a><a href="belajar data science (3).jpg" target="_blank" class="page-btn">Materi 2</a><a href="belajar data science (4).jpg" target="_blank" class="page-btn">Materi 3</a></div>
             </div>
             <div class="cert-card">
                 <div class="cert-header"><i class="fas fa-brain"></i><div><span class="cert-title">AI Engineer</span><span class="cert-issuer">DTS - KOMDIGI</span></div></div>
-                <div class="cert-pages"><a href="AI ENGINEER.jpg" target="_blank" class="page-btn">1</a><a href="AI ENGINEER (2).jpg" target="_blank" class="page-btn">2</a></div>
+                <div class="cert-pages"><a href="AI ENGINEER.jpg" target="_blank" class="page-btn">Sertifikat</a><a href="AI ENGINEER (2).jpg" target="_blank" class="page-btn">Transkrip</a></div>
             </div>
         </div>
 
@@ -411,7 +395,7 @@
             </div>
             <div class="cert-card">
                 <div class="cert-header"><i class="fas fa-medal org-icon"></i><div><span class="cert-title">Prestasi Atlet Porseni</span><span class="cert-issuer">Kejuaraan Olahraga</span></div></div>
-                <div class="cert-pages"><a href="atlet 2023'_page-0001.jpg" target="_blank" class="page-btn btn-org">Sertif 1</a><a href="atlet 2023'.png" target="_blank" class="page-btn btn-org">Sertif 2</a></div>
+                <div class="cert-pages"><a href="atlet 2023'_page-0001.jpg" target="_blank" class="page-btn btn-org">Sertifikat 1</a><a href="atlet 2023'.png" target="_blank" class="page-btn btn-org">Sertifikat 2</a></div>
             </div>
             <div class="cert-card">
                 <div class="cert-header"><i class="fas fa-clipboard-list org-icon"></i><div><span class="cert-title">Kepanitiaan Event</span><span class="cert-issuer">Event Organizer</span></div></div>
@@ -431,28 +415,28 @@
             </div>
             <div class="cert-card">
                 <div class="cert-header"><i class="fas fa-industry sem-icon"></i><div><span class="cert-title">Kunjungan Industri</span><span class="cert-issuer">Polsri</span></div></div>
-                <div class="cert-pages"><a href="kunjungan industri_page-0001.jpg" target="_blank" class="page-btn btn-sem">Dokumen</a></div>
+                <div class="cert-pages"><a href="kunjungan industri_page-0001.jpg" target="_blank" class="page-btn btn-sem">Lihat Dokumen</a></div>
             </div>
         </div>
     </div>
 
     <div class="container" id="contact">
-        <h2>Contact Me</h2>
+        <h2>Hubungi Saya</h2>
         <div class="contact-cta">
-            <p class="cta-text">Tertarik berkolaborasi? Lihat kualifikasi lengkap saya.</p>
-            <a href="CV Muhammad Ridwan.pdf" class="btn-download-cv" download><i class="fas fa-download"></i> Download CV (PDF)</a>
+            <p class="cta-text">Tertarik berkolaborasi dalam proyek teknologi atau event? Mari diskusikan bersama.</p>
+            <a href="CV Muhammad Ridwan.pdf" class="btn-download-cv" download><i class="fas fa-download"></i> Unduh CV (PDF)</a>
         </div>
         <div class="contact-wrapper">
-            <div class="form-group"><label class="form-label">Name</label><input type="text" id="name" class="form-input" placeholder="Your Name"></div>
-            <div class="form-group"><label class="form-label">Message</label><textarea id="message" class="form-textarea" rows="5" placeholder="Write your message here..."></textarea></div>
+            <div class="form-group"><label class="form-label">Nama</label><input type="text" id="name" class="form-input" placeholder="Nama Anda"></div>
+            <div class="form-group"><label class="form-label">Pesan</label><textarea id="message" class="form-textarea" rows="5" placeholder="Tulis pesan Anda di sini..."></textarea></div>
             <div class="btn-send-group">
-                <button onclick="sendToWhatsapp()" class="btn-submit btn-wa-send"><i class="fab fa-whatsapp"></i> Send via WhatsApp</button>
-                <button onclick="sendToEmail()" class="btn-submit btn-email-send"><i class="fas fa-envelope"></i> Send via Email</button>
+                <button onclick="sendToWhatsapp()" class="btn-submit btn-wa-send"><i class="fab fa-whatsapp"></i> Kirim via WhatsApp</button>
+                <button onclick="sendToEmail()" class="btn-submit btn-email-send"><i class="fas fa-envelope"></i> Kirim via Email</button>
             </div>
         </div>
     </div>
 
-    <footer><p>Designed by Muhammad Ridwan | 2025</p></footer>
+    <footer><p>Dibuat oleh Muhammad Ridwan | 2025</p></footer>
 
     <script>
         // Menu HP
@@ -460,7 +444,7 @@
         
         // Typing
         const textElement = document.querySelector('.typing-text');
-        const words = ["Project Admin", "Network Engineer", "Event Organizer", "Data Enthusiast"];
+        const words = ["Admin Proyek", "Teknisi Jaringan", "Event Organizer", "Pegiat Data"];
         let wordIndex = 0, charIndex = 0, isDeleting = false;
         function typeEffect() {
             const current = words[wordIndex];
@@ -493,20 +477,20 @@
             }
             slides[slideIndex-1].style.display = "block";  
             
-            // Auto slide setiap 3 detik (3000ms)
+            // Auto slide setiap 3 detik
             slideTimer = setTimeout(() => showSlides(slideIndex += 1), 3000); 
         }
 
-        // Contact
+        // Contact Logic
         function sendToWhatsapp() {
             let n = document.getElementById("name").value, m = document.getElementById("message").value;
-            if(n==""||m=="") { alert("Please fill data!"); return; }
-            window.open("https://wa.me/62895620677793?text=*Name:* "+n+"%0a*Message:* "+m, '_blank');
+            if(n==""||m=="") { alert("Mohon isi nama dan pesan!"); return; }
+            window.open("https://wa.me/62895620677793?text=*Nama:* "+n+"%0a*Pesan:* "+m, '_blank');
         }
         function sendToEmail() {
             let n = document.getElementById("name").value, m = document.getElementById("message").value;
-            if(n==""||m=="") { alert("Please fill data!"); return; }
-            window.location.href = "mailto:ridwan.bbk911@gmail.com?subject=Contact from "+n+"&body=Name: "+n+"%0aMessage: "+m;
+            if(n==""||m=="") { alert("Mohon isi nama dan pesan!"); return; }
+            window.location.href = "mailto:ridwan.bbk911@gmail.com?subject=Pesan dari "+n+"&body=Nama: "+n+"%0aPesan: "+m;
         }
     </script>
 </body>
