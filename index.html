@@ -2,19 +2,18 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio Muhammad Ridwan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Portofolio Muhammad Ridwan</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
         :root {
-            --primary: #0ea5e9;      /* Biru Cerah */
-            --dark: #0f172a;         /* Background Utama */
-            --card-bg: #1e293b;      /* Background Kartu */
-            --text-light: #f1f5f9;   /* Teks Putih */
-            --text-gray: #94a3b8;    /* Teks Abu-abu */
-            --accent: #f59e0b;       /* Warna Oranye (untuk Organisasi) */
+            --primary: #0ea5e9;
+            --dark: #0f172a;
+            --card-bg: #1e293b;
+            --text-light: #f1f5f9;
+            --text-gray: #94a3b8;
+            --accent: #f59e0b;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
@@ -26,7 +25,7 @@
             overflow-x: hidden;
         }
 
-        /* --- NAVIGATION MENU --- */
+        /* --- NAVIGATION MENU (FIXED FOR MOBILE) --- */
         nav {
             position: fixed; top: 0; left: 0; width: 100%;
             background: rgba(15, 23, 42, 0.95);
@@ -36,23 +35,22 @@
             z-index: 1000; border-bottom: 1px solid #334155;
         }
         .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); letter-spacing: 1px; }
+        
         .nav-links { display: flex; list-style: none; gap: 25px; }
         .nav-links a {
             text-decoration: none; color: var(--text-light); font-weight: 500; font-size: 0.9rem;
             transition: 0.3s; position: relative;
         }
         .nav-links a:hover { color: var(--primary); }
-        .nav-links a::after {
-            content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0;
-            background-color: var(--primary); transition: width 0.3s;
-        }
-        .nav-links a:hover::after { width: 100%; }
+
+        /* Hamburger Menu (Untuk HP) */
+        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: var(--text-light); }
 
         /* --- HERO SECTION --- */
         header {
             min-height: 100vh;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; padding-top: 80px;
+            text-align: center; padding-top: 80px; padding-left: 20px; padding-right: 20px;
         }
 
         .profile-img {
@@ -64,13 +62,11 @@
         }
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 
-        h1 { font-size: 3rem; font-weight: 700; margin-bottom: 10px; }
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 10px; }
+        @media(min-width: 768px) { h1 { font-size: 3rem; } }
         h1 span { color: var(--primary); }
 
-        /* ANIMASI MENGETIK */
-        .typing-container { font-size: 1.4rem; color: var(--text-gray); margin-bottom: 30px; min-height: 30px; }
-        .typing-text::after { content: '|'; animation: blink 0.7s infinite; }
-        @keyframes blink { 50% { opacity: 0; } }
+        .typing-container { font-size: 1.2rem; color: var(--text-gray); margin-bottom: 30px; min-height: 30px; }
 
         .social-buttons { display: flex; gap: 15px; margin-top: 20px; flex-wrap: wrap; justify-content: center;}
         .social-icon {
@@ -78,79 +74,125 @@
             display: flex; align-items: center; justify-content: center;
             color: var(--primary); text-decoration: none; transition: 0.3s; font-size: 1.2rem;
         }
-        .social-icon:hover { background: var(--primary); color: white; box-shadow: 0 0 15px var(--primary); transform: translateY(-5px); }
+        .social-icon:hover { background: var(--primary); color: white; transform: translateY(-5px); }
 
         /* --- CONTAINER UMUM --- */
-        .container { max-width: 1100px; margin: 0 auto; padding: 80px 20px; border-bottom: 1px solid #1e293b; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 60px 20px; border-bottom: 1px solid #1e293b; }
         
         h2 {
-            font-size: 2rem; text-align: center; margin-bottom: 50px;
+            font-size: 2rem; text-align: center; margin-bottom: 40px;
             position: relative; display: inline-block; left: 50%; transform: translateX(-50%);
         }
         h2::after {
-            content: ''; position: absolute; bottom: -10px; left: 0; width: 100%; height: 3px;
-            background: var(--primary);
+            content: ''; position: absolute; bottom: -10px; left: 0; width: 100%; height: 3px; background: var(--primary);
         }
 
-        /* --- TIMELINE STYLE (EXPERIENCE & ORG) --- */
+        /* --- GALERI FOTO (BARU) --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        .gallery-item {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid #334155;
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.03);
+            border-color: var(--primary);
+            box-shadow: 0 5px 15px rgba(14, 165, 233, 0.3);
+        }
+
+        /* --- TIMELINE & CARDS --- */
         .timeline-box {
-            background: var(--card-bg); padding: 35px; border-radius: 15px;
-            margin-bottom: 30px; border-left: 5px solid var(--primary);
-            transition: 0.3s; position: relative;
-        }
-        .timeline-box:hover { transform: translateX(10px); background: #253246; }
-        
-        /* Judul & Subjudul */
-        .role { color: var(--primary); font-weight: 700; font-size: 1.3rem; margin-bottom: 5px; }
-        .company { font-size: 0.95rem; color: #cbd5e1; font-weight: 600; display: block; margin-bottom: 5px; }
-        .date { font-size: 0.85rem; color: var(--text-gray); font-style: italic; margin-bottom: 15px; display: block; }
-        
-        /* Isi Bullet Points */
-        .desc ul { padding-left: 20px; color: #cbd5e1; line-height: 1.7; font-size: 0.95rem; text-align: justify; }
-        .desc li { margin-bottom: 8px; }
-
-        /* Style Khusus Organisasi (Warna Aksen) */
-        .org-box { border-left-color: var(--accent); }
-        .org-box .role { color: var(--accent); }
-
-        /* --- CERTIFICATE GRID --- */
-        .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .cert-card {
             background: var(--card-bg); padding: 25px; border-radius: 15px;
+            margin-bottom: 20px; border-left: 5px solid var(--primary);
+            transition: 0.3s;
+        }
+        .timeline-box:hover { transform: translateX(5px); background: #253246; }
+        .role { color: var(--primary); font-weight: 700; font-size: 1.2rem; margin-bottom: 5px; }
+        .org-box .role { color: var(--accent); }
+        .org-box { border-left-color: var(--accent); }
+        .company { font-size: 0.9rem; color: #cbd5e1; font-weight: 600; display: block; margin-bottom: 5px; }
+        .date { font-size: 0.8rem; color: var(--text-gray); font-style: italic; margin-bottom: 10px; display: block; }
+        .desc ul { padding-left: 20px; color: #cbd5e1; line-height: 1.6; font-size: 0.9rem; text-align: justify; }
+
+        /* --- CERTIFICATES --- */
+        .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .cert-card {
+            background: var(--card-bg); padding: 20px; border-radius: 15px;
             display: flex; flex-direction: column; transition: 0.3s; border: 1px solid transparent; height: 100%;
         }
-        .cert-card:hover { border-color: var(--primary); transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-        
+        .cert-card:hover { border-color: var(--primary); transform: translateY(-5px); }
         .cert-header { display: flex; gap: 15px; margin-bottom: 15px; align-items: flex-start; }
         .cert-header i { font-size: 2rem; color: var(--primary); margin-top: 5px; }
-        .cert-title { font-weight: 600; font-size: 1rem; line-height: 1.4; margin-bottom: 5px; display: block; }
+        .cert-title { font-weight: 600; font-size: 1rem; margin-bottom: 5px; display: block; }
         .cert-issuer { font-size: 0.8rem; color: var(--text-gray); background: rgba(255,255,255,0.05); padding: 3px 8px; border-radius: 4px; }
-
         .cert-pages { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); }
         .page-btn {
-            padding: 6px 12px; font-size: 0.75rem; background: rgba(14, 165, 233, 0.1);
+            padding: 5px 10px; font-size: 0.7rem; background: rgba(14, 165, 233, 0.1);
             color: var(--primary); text-decoration: none; border-radius: 5px; transition: 0.3s; font-weight: 600;
         }
         .page-btn:hover { background: var(--primary); color: white; }
 
-        /* --- SKILLS SECTION --- */
-        .skill-container { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
+        /* --- SKILLS --- */
+        .skill-container { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
         .skill-tag {
-            background: var(--card-bg); border: 1px solid #334155; padding: 10px 25px;
-            border-radius: 50px; color: var(--text-light); font-size: 0.95rem; transition: 0.3s;
+            background: var(--card-bg); border: 1px solid #334155; padding: 8px 20px;
+            border-radius: 50px; color: var(--text-light); font-size: 0.9rem; transition: 0.3s;
         }
-        .skill-tag:hover { background: var(--primary); border-color: var(--primary); transform: scale(1.05); }
+        .skill-tag:hover { background: var(--primary); border-color: var(--primary); }
+
+        /* --- CONTACT FORM (BARU) --- */
+        .contact-wrapper {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .form-group { margin-bottom: 20px; text-align: left; }
+        .form-label { display: block; margin-bottom: 8px; color: var(--text-light); font-weight: 600; }
+        .form-input, .form-textarea {
+            width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #334155;
+            background: var(--dark); color: white; font-family: inherit;
+        }
+        .form-input:focus, .form-textarea:focus { border-color: var(--primary); outline: none; }
+        .btn-send-group { display: flex; gap: 10px; margin-top: 20px; }
+        .btn-submit {
+            flex: 1; padding: 12px; border: none; border-radius: 8px; cursor: pointer;
+            font-weight: 600; transition: 0.3s; color: white; display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+        .btn-wa-send { background: #25D366; }
+        .btn-wa-send:hover { background: #1ebe57; }
+        .btn-email-send { background: var(--primary); }
+        .btn-email-send:hover { background: #0284c7; }
 
         /* --- FOOTER --- */
-        footer { text-align: center; padding: 40px; background: #020617; color: var(--text-gray); font-size: 0.9rem; }
+        footer { text-align: center; padding: 30px; background: #020617; color: var(--text-gray); font-size: 0.9rem; }
 
-        /* --- MOBILE RESPONSIVE --- */
+        /* --- MOBILE RESPONSIVE RULES --- */
         @media (max-width: 768px) {
-            h1 { font-size: 2.2rem; }
-            .nav-links { display: none; } 
-            .typing-container { font-size: 1rem; }
-            .container { padding: 50px 20px; }
-            .timeline-box { padding: 25px; }
+            /* Menu Navigasi HP */
+            .menu-toggle { display: block; }
+            .nav-links {
+                position: absolute; top: 60px; left: 0; width: 100%;
+                background: var(--card-bg); flex-direction: column;
+                align-items: center; padding: 20px 0; gap: 20px;
+                display: none; /* Sembunyi default */
+                border-bottom: 1px solid #334155;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            }
+            .nav-links.active { display: flex; } /* Muncul saat diklik */
+            
+            h1 { font-size: 2rem; }
+            .container { padding: 40px 15px; }
+            .btn-send-group { flex-direction: column; }
         }
     </style>
 </head>
@@ -158,13 +200,18 @@
 
     <nav>
         <div class="logo">Ridwan<span style="color:white;">.Dev</span></div>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#organization">Organization</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#certificates">Certificates</a></li>
+        
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <ul class="nav-links" id="navMenu">
+            <li><a href="#home" onclick="toggleMenu()">Home</a></li>
+            <li><a href="#about" onclick="toggleMenu()">About</a></li>
+            <li><a href="#gallery" onclick="toggleMenu()">Gallery</a></li>
+            <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+            <li><a href="#certificates" onclick="toggleMenu()">Certificates</a></li>
+            <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
         </ul>
     </nav>
 
@@ -186,12 +233,27 @@
 
     <div class="container" id="about">
         <h2>About Me</h2>
-        <p style="text-align: justify; max-width: 850px; margin: 0 auto; line-height: 1.8; color: #cbd5e1; font-size: 1.05rem;">
+        <p style="text-align: justify; max-width: 850px; margin: 0 auto; line-height: 1.8; color: #cbd5e1;">
             Lulusan baru <strong>D3 Teknik Telekomunikasi</strong> dari Politeknik Negeri Sriwijaya dengan antusias yang tinggi pada teknologi jaringan dan fiber optik (FTTH). 
             Saat ini bekerja sebagai <strong>Project Admin & Support</strong> di PT. Telkom Akses Regional Palembang.
             <br><br>
-            Saya memiliki pengalaman praktis dalam instalasi, konfigurasi, dan pemeliharaan perangkat jaringan. Selain itu, saya juga memiliki pengetahuan luas dalam mengelola acara (Event Organizer), baik event perkantoran, konser, maupun turnamen olahraga, yang melatih kemampuan kepemimpinan dan kerja sama tim saya.
+            Saya memiliki pengalaman praktis dalam instalasi, konfigurasi, dan pemeliharaan perangkat jaringan. Selain itu, saya juga memiliki pengetahuan luas dalam mengelola acara (Event Organizer), baik event perkantoran, konser, maupun turnamen olahraga.
         </p>
+    </div>
+
+    <div class="container" id="gallery">
+        <h2>My Gallery</h2>
+        <p style="text-align: center; margin-bottom: 20px; color: var(--text-gray);">Dokumentasi kegiatan dan proyek.</p>
+        <div class="gallery-grid">
+            <img src="galeri.jpg" alt="Galeri 1" class="gallery-item">
+            <img src="galeri (2).jpg" alt="Galeri 2" class="gallery-item">
+            <img src="galeri (3).jpg" alt="Galeri 3" class="gallery-item">
+            <img src="galeri (4).jpg" alt="Galeri 4" class="gallery-item">
+            <img src="galeri (5).jpg" alt="Galeri 5" class="gallery-item">
+            <img src="galeri (6).jpg" alt="Galeri 6" class="gallery-item">
+            <img src="galeri (7).jpg" alt="Galeri 7" class="gallery-item">
+            <img src="galeri (8).jpg" alt="Galeri 8" class="gallery-item">
+        </div>
     </div>
 
     <div class="container" id="experience">
@@ -205,7 +267,7 @@
                 <ul>
                     <li>Bertanggung jawab atas administrasi harian proyek konstruksi di Unit Konstruksi Regional Palembang.</li>
                     <li>Mengelola dan memvalidasi data proyek menggunakan Excel & Google Spreadsheet.</li>
-                    <li>Memberikan dukungan (support) komunikasi antara tim manajemen dan tim lapangan untuk memastikan target operasional tercapai.</li>
+                    <li>Memberikan dukungan (support) komunikasi antara tim manajemen dan tim lapangan.</li>
                 </ul>
             </div>
         </div>
@@ -218,7 +280,7 @@
                 <ul>
                     <li>Memonitoring keadaan WiFi Palembang zona Sumatera Selatan dengan berbasis website internal perusahaan.</li>
                     <li>Melaporkan WiFi pelanggan yang mengalami lost agar bisa segera dikerjakan teknisi.</li>
-                    <li>Melakukan pelatihan Quality Control untuk perangkat pelanggan yang akan didistribusikan.</li>
+                    <li>Melakukan pelatihan Quality Control untuk perangkat pelanggan.</li>
                     <li>Melakukan pelatihan dan praktek langsung instalasi jaringan pelanggan.</li>
                 </ul>
             </div>
@@ -254,55 +316,36 @@
             <span class="date">2023 - 2024</span>
             <div class="desc">
                 <ul>
-                    <li>Menjadi crew di event konser Palembang, seperti Nyanyian Riang Gembira (NRG) 2023, Menuju NRG 2023, Agrifest 2023, Lawfest2 2023, Nyanyian Riang Gembira (NRG) 2024.</li>
-                    <li>Disetiap event posisi selalu berubah dengan komposisi team yang berbeda, seperti runner, ticketing, crowd control, crew backstage.</li>
-                    <li>Bekerja sama secara tim, guna meningkatkan pelayanan yang baik.</li>
+                    <li>Menjadi crew di event konser Palembang (NRG 2023, Menuju NRG 2023, Agrifest 2023, Lawfest2 2023).</li>
+                    <li>Posisi: Runner, Ticketing, Crowd Control, Crew Backstage.</li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <div class="container" id="organization">
+    <div class="container">
         <h2>Organization</h2>
-        
         <div class="timeline-box org-box">
             <div class="role">Wakil Ketua Umum 2</div>
             <span class="company">UKM Olahraga Politeknik Negeri Sriwijaya</span>
             <span class="date">Desember 2023 - Desember 2024</span>
             <div class="desc">
                 <ul>
-                    <li>Mengelola jadwal latihan atlet, serta berkoordinasi dengan pihak lembaga dan pelatih.</li>
-                    <li>Menjadi Ketua Official Politeknik Negeri Sriwijaya dalam Porseni ke-XIV di Politeknik Negeri Malang.</li>
-                    <li>Menjadi juara umum ke-5 secara berturut-turut.</li>
+                    <li>Mengelola jadwal latihan atlet dan koordinasi dengan pelatih.</li>
+                    <li>Ketua Official Polsri dalam Porseni ke-XIV di Malang (Juara Umum ke-5).</li>
                 </ul>
             </div>
         </div>
-
         <div class="timeline-box org-box">
             <div class="role">Wakil Ketua OSIS</div>
             <span class="company">SMA Negeri 16 Palembang</span>
             <span class="date">Agustus 2020 - Juli 2021</span>
             <div class="desc">
                 <ul>
-                    <li>Melakukan Pengenalan Siswa baru dengan sistem online.</li>
-                    <li>Mengelola kegiatan vaksinasi massal di sekolah (vaksinasi 1, 2, dan booster 1).</li>
-                    <li>Mengelola organisasi agar dapat berjalan secara hybrid.</li>
+                    <li>Melakukan Pengenalan Siswa baru online.</li>
+                    <li>Mengelola vaksinasi massal sekolah dan kegiatan hybrid.</li>
                 </ul>
             </div>
-        </div>
-    </div>
-
-    <div class="container" id="education">
-        <h2>Education</h2>
-        <div class="timeline-box" style="border-left-color: #10b981;">
-            <div class="role" style="color: #10b981;">Politeknik Negeri Sriwijaya</div>
-            <span class="company">D3 Teknik Telekomunikasi | Palembang</span>
-            <span class="date">2022 - 2025</span>
-        </div>
-        <div class="timeline-box" style="border-left-color: #10b981;">
-            <div class="role" style="color: #10b981;">SMA Negeri 16 Palembang</div>
-            <span class="company">Jurusan IPA</span>
-            <span class="date">2019 - 2022</span>
         </div>
     </div>
 
@@ -311,12 +354,9 @@
         <div class="skill-container">
             <span class="skill-tag">Instalasi Jaringan WiFi</span>
             <span class="skill-tag">Fiber Optik (FTTH)</span>
-            <span class="skill-tag">Jaringan Radio</span>
             <span class="skill-tag">Microsoft Excel & Spreadsheet</span>
             <span class="skill-tag">Python Programming</span>
             <span class="skill-tag">Leadership & Teamwork</span>
-            <span class="skill-tag">Problem Solving</span>
-            <span class="skill-tag">Communication</span>
             <span class="skill-tag">Event Management</span>
         </div>
     </div>
@@ -324,137 +364,66 @@
     <div class="container" id="certificates">
         <h2>Certificates</h2>
         <div class="cert-grid">
+            <div class="cert-card">
+                <div class="cert-header"><i class="fab fa-python"></i><div><span class="cert-title">Pemrograman Python</span><span class="cert-issuer">Dicoding Indonesia</span></div></div>
+                <div class="cert-pages"><a href="pemograman dengan pyhton.jpg" target="_blank" class="page-btn">Hal 1</a><a href="pemograman dengan pyhton (2).jpg" target="_blank" class="page-btn">Hal 2</a><a href="pemograman dengan pyhton (3).jpg" target="_blank" class="page-btn">Hal 3</a></div>
+            </div>
+            <div class="cert-card">
+                <div class="cert-header"><i class="fas fa-chart-bar"></i><div><span class="cert-title">Data Science Basics</span><span class="cert-issuer">Dicoding Indonesia</span></div></div>
+                <div class="cert-pages"><a href="belajar data science.jpg" target="_blank" class="page-btn">Hal 1</a><a href="belajar data science (2).jpg" target="_blank" class="page-btn">Hal 2</a><a href="belajar data science (3).jpg" target="_blank" class="page-btn">Hal 3</a><a href="belajar data science (4).jpg" target="_blank" class="page-btn">Hal 4</a></div>
+            </div>
+            <div class="cert-card">
+                <div class="cert-header"><i class="fas fa-database"></i><div><span class="cert-title">Structured Query Language</span><span class="cert-issuer">Dicoding Indonesia</span></div></div>
+                <div class="cert-pages"><a href="belajar SQL.jpg" target="_blank" class="page-btn">Hal 1</a><a href="belajar SQL (2).jpg" target="_blank" class="page-btn">Hal 2</a><a href="belajar SQL (3).jpg" target="_blank" class="page-btn">Hal 3</a></div>
+            </div>
+            <div class="cert-card">
+                <div class="cert-header"><i class="fas fa-robot"></i><div><span class="cert-title">Dasar AI</span><span class="cert-issuer">Dicoding Indonesia</span></div></div>
+                <div class="cert-pages"><a href="belajar AI.jpg" target="_blank" class="page-btn">Hal 1</a><a href="belajar AI (2).jpg" target="_blank" class="page-btn">Hal 2</a></div>
+            </div>
+            <div class="cert-card">
+                <div class="cert-header"><i class="fas fa-network-wired"></i><div><span class="cert-title">Teknisi Drive Tester</span><span class="cert-issuer">FGA - KOMDIGI</span></div></div>
+                <div class="cert-pages"><a href="TEKNISI DRIVER TESTER.jpg" target="_blank" class="page-btn">Hal 1</a><a href="TEKNISI DRIVER TESTER (2).jpg" target="_blank" class="page-btn">Hal 2</a></div>
+            </div>
+            <div class="cert-card">
+                <div class="cert-header"><i class="fas fa-brain"></i><div><span class="cert-title">AI Engineer</span><span class="cert-issuer">DTS - KOMDIGI</span></div></div>
+                <div class="cert-pages"><a href="AI ENGINEER.jpg" target="_blank" class="page-btn">Hal 1</a><a href="AI ENGINEER (2).jpg" target="_blank" class="page-btn">Hal 2</a></div>
+            </div>
+            <div class="cert-card">
+                <div class="cert-header"><i class="fas fa-lightbulb"></i><div><span class="cert-title">Produk AI</span><span class="cert-issuer">DTS - KOMDIGI</span></div></div>
+                <div class="cert-pages"><a href="pengembangan produk AI.jpg" target="_blank" class="page-btn">Hal 1</a><a href="pengembangan produk AI (2).jpg" target="_blank" class="page-btn">Hal 2</a></div>
+            </div>
+            <div class="cert-card">
+                <div class="cert-header"><i class="fab fa-microsoft"></i><div><span class="cert-title">Rekayasa Prompt</span><span class="cert-issuer">Microsoft & KOMDIGI</span></div></div>
+                <div class="cert-pages"><a href="rekayasa prompt.jpg" target="_blank" class="page-btn">Hal 1</a><a href="rekayasa prompt (2).jpg" target="_blank" class="page-btn">Hal 2</a></div>
+            </div>
+            <div class="cert-card">
+                <div class="cert-header"><i class="fas fa-shield-alt"></i><div><span class="cert-title">Keamanan Digital</span><span class="cert-issuer">DTS - KOMDIGI</span></div></div>
+                <div class="cert-pages"><a href="keamanan digital.jpg" target="_blank" class="page-btn">Hal 1</a><a href="keamanan digital (2).jpg" target="_blank" class="page-btn">Hal 2</a></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="contact">
+        <h2>Contact Me</h2>
+        <div class="contact-wrapper">
+            <div class="form-group">
+                <label class="form-label">Name</label>
+                <input type="text" id="name" class="form-input" placeholder="Your Name">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Message</label>
+                <textarea id="message" class="form-textarea" rows="5" placeholder="Write your message here..."></textarea>
+            </div>
             
-            <div class="cert-card">
-                <div class="cert-header">
-                    <i class="fab fa-python"></i>
-                    <div>
-                        <span class="cert-title">Pemrograman Python</span>
-                        <span class="cert-issuer">Dicoding Indonesia</span>
-                    </div>
-                </div>
-                <div class="cert-pages">
-                    <a href="pemograman dengan pyhton.jpg" target="_blank" class="page-btn">Hal 1</a>
-                    <a href="pemograman dengan pyhton (2).jpg" target="_blank" class="page-btn">Hal 2</a>
-                    <a href="pemograman dengan pyhton (3).jpg" target="_blank" class="page-btn">Hal 3</a>
-                </div>
+            <div class="btn-send-group">
+                <button onclick="sendToWhatsapp()" class="btn-submit btn-wa-send">
+                    <i class="fab fa-whatsapp"></i> Send via WhatsApp
+                </button>
+                
+                <button onclick="sendToEmail()" class="btn-submit btn-email-send">
+                    <i class="fas fa-envelope"></i> Send via Email
+                </button>
             </div>
-
-            <div class="cert-card">
-                <div class="cert-header">
-                    <i class="fas fa-chart-bar"></i>
-                    <div>
-                        <span class="cert-title">Data Science Basics</span>
-                        <span class="cert-issuer">Dicoding Indonesia</span>
-                    </div>
-                </div>
-                <div class="cert-pages">
-                    <a href="belajar data science.jpg" target="_blank" class="page-btn">Hal 1</a>
-                    <a href="belajar data science (2).jpg" target="_blank" class="page-btn">Hal 2</a>
-                    <a href="belajar data science (3).jpg" target="_blank" class="page-btn">Hal 3</a>
-                    <a href="belajar data science (4).jpg" target="_blank" class="page-btn">Hal 4</a>
-                </div>
-            </div>
-
-            <div class="cert-card">
-                <div class="cert-header">
-                    <i class="fas fa-database"></i>
-                    <div>
-                        <span class="cert-title">Structured Query Language</span>
-                        <span class="cert-issuer">Dicoding Indonesia</span>
-                    </div>
-                </div>
-                <div class="cert-pages">
-                    <a href="belajar SQL.jpg" target="_blank" class="page-btn">Hal 1</a>
-                    <a href="belajar SQL (2).jpg" target="_blank" class="page-btn">Hal 2</a>
-                    <a href="belajar SQL (3).jpg" target="_blank" class="page-btn">Hal 3</a>
-                </div>
-            </div>
-
-            <div class="cert-card">
-                <div class="cert-header">
-                    <i class="fas fa-robot"></i>
-                    <div>
-                        <span class="cert-title">Dasar Artificial Intelligence</span>
-                        <span class="cert-issuer">Dicoding Indonesia</span>
-                    </div>
-                </div>
-                <div class="cert-pages">
-                    <a href="belajar AI.jpg" target="_blank" class="page-btn">Hal 1</a>
-                    <a href="belajar AI (2).jpg" target="_blank" class="page-btn">Hal 2</a>
-                </div>
-            </div>
-
-            <div class="cert-card">
-                <div class="cert-header">
-                    <i class="fas fa-network-wired"></i>
-                    <div>
-                        <span class="cert-title">Teknisi Drive Tester</span>
-                        <span class="cert-issuer">FGA - KOMDIGI</span>
-                    </div>
-                </div>
-                <div class="cert-pages">
-                    <a href="TEKNISI DRIVER TESTER.jpg" target="_blank" class="page-btn">Hal 1</a>
-                    <a href="TEKNISI DRIVER TESTER (2).jpg" target="_blank" class="page-btn">Hal 2</a>
-                </div>
-            </div>
-
-            <div class="cert-card">
-                <div class="cert-header">
-                    <i class="fas fa-brain"></i>
-                    <div>
-                        <span class="cert-title">AI Engineer For Milenial</span>
-                        <span class="cert-issuer">DTS - KOMDIGI</span>
-                    </div>
-                </div>
-                <div class="cert-pages">
-                    <a href="AI ENGINEER.jpg" target="_blank" class="page-btn">Hal 1</a>
-                    <a href="AI ENGINEER (2).jpg" target="_blank" class="page-btn">Hal 2</a>
-                </div>
-            </div>
-
-            <div class="cert-card">
-                <div class="cert-header">
-                    <i class="fas fa-lightbulb"></i>
-                    <div>
-                        <span class="cert-title">Pengembangan Produk AI</span>
-                        <span class="cert-issuer">DTS - KOMDIGI</span>
-                    </div>
-                </div>
-                <div class="cert-pages">
-                    <a href="pengembangan produk AI.jpg" target="_blank" class="page-btn">Hal 1</a>
-                    <a href="pengembangan produk AI (2).jpg" target="_blank" class="page-btn">Hal 2</a>
-                </div>
-            </div>
-
-            <div class="cert-card">
-                <div class="cert-header">
-                    <i class="fab fa-microsoft"></i>
-                    <div>
-                        <span class="cert-title">Rekayasa Prompt (Azure)</span>
-                        <span class="cert-issuer">Microsoft & KOMDIGI</span>
-                    </div>
-                </div>
-                <div class="cert-pages">
-                    <a href="rekayasa prompt.jpg" target="_blank" class="page-btn">Hal 1</a>
-                    <a href="rekayasa prompt (2).jpg" target="_blank" class="page-btn">Hal 2</a>
-                </div>
-            </div>
-
-            <div class="cert-card">
-                <div class="cert-header">
-                    <i class="fas fa-shield-alt"></i>
-                    <div>
-                        <span class="cert-title">Keamanan Digital</span>
-                        <span class="cert-issuer">DTS - KOMDIGI</span>
-                    </div>
-                </div>
-                <div class="cert-pages">
-                    <a href="keamanan digital.jpg" target="_blank" class="page-btn">Hal 1</a>
-                    <a href="keamanan digital (2).jpg" target="_blank" class="page-btn">Hal 2</a>
-                </div>
-            </div>
-
         </div>
     </div>
 
@@ -463,6 +432,13 @@
     </footer>
 
     <script>
+        // 1. Logic Menu Navigasi HP
+        function toggleMenu() {
+            const menu = document.getElementById("navMenu");
+            menu.classList.toggle("active");
+        }
+
+        // 2. Logic Typing Animation
         const textElement = document.querySelector('.typing-text');
         const words = ["Project Admin", "Network Engineer", "Event Organizer", "Data Enthusiast"];
         let wordIndex = 0;
@@ -471,7 +447,6 @@
 
         function typeEffect() {
             const currentWord = words[wordIndex];
-            
             if (isDeleting) {
                 textElement.textContent = currentWord.substring(0, charIndex - 1);
                 charIndex--;
@@ -479,20 +454,49 @@
                 textElement.textContent = currentWord.substring(0, charIndex + 1);
                 charIndex++;
             }
-
             if (!isDeleting && charIndex === currentWord.length) {
-                isDeleting = true;
-                setTimeout(typeEffect, 2000);
+                isDeleting = true; setTimeout(typeEffect, 2000);
             } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                wordIndex = (wordIndex + 1) % words.length;
-                setTimeout(typeEffect, 500);
+                isDeleting = false; wordIndex = (wordIndex + 1) % words.length; setTimeout(typeEffect, 500);
             } else {
                 setTimeout(typeEffect, isDeleting ? 100 : 200);
             }
         }
-
         document.addEventListener('DOMContentLoaded', typeEffect);
+
+        // 3. Logic Kirim Pesan (WA & Email)
+        function sendToWhatsapp() {
+            let name = document.getElementById("name").value;
+            let message = document.getElementById("message").value;
+            
+            if(name == "" || message == "") {
+                alert("Please fill in your name and message!");
+                return;
+            }
+
+            let phonenumber = "62895620677793"; // Nomor WA Anda
+            let url = "https://wa.me/" + phonenumber + "?text=" 
+            + "*Name :* " + name + "%0a"
+            + "*Message :* " + message;
+
+            window.open(url, '_blank').focus();
+        }
+
+        function sendToEmail() {
+            let name = document.getElementById("name").value;
+            let message = document.getElementById("message").value;
+            let email = "ridwan.bbk911@gmail.com"; // Email Anda
+
+            if(name == "" || message == "") {
+                alert("Please fill in your name and message!");
+                return;
+            }
+
+            let subject = "Portfolio Contact from " + name;
+            let body = "Name: " + name + "\n\nMessage:\n" + message;
+            
+            window.location.href = "mailto:" + email + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+        }
     </script>
 
 </body>
