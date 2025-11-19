@@ -37,25 +37,41 @@
             padding: 10px 5%;
             display: flex; justify-content: space-between; align-items: center;
             z-index: 1000; border-bottom: 1px solid #334155;
+            transition: all 0.3s ease;
         }
         
-        .logo-container { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-        
-        /* LOGO BULAT */
+        .logo-container { 
+            display: flex; align-items: center; gap: 10px; text-decoration: none; 
+            transition: transform 0.3s ease;
+        }
+        .logo-container:hover { transform: scale(1.02); }
+
         .logo-img { 
             height: 45px; 
             width: 45px; 
             object-fit: cover; 
             border-radius: 50%; 
             border: 2px solid var(--primary); 
+            transition: border-color 0.3s ease;
         }
         
         .logo-text { font-size: 1.4rem; font-weight: 700; color: var(--text-light); letter-spacing: 1px; text-transform: uppercase; }
         
         .nav-links { display: flex; list-style: none; gap: 20px; }
-        .nav-links a { text-decoration: none; color: var(--text-light); font-weight: 500; font-size: 0.9rem; transition: 0.3s; position: relative; }
+        .nav-links a { 
+            text-decoration: none; color: var(--text-light); font-weight: 500; font-size: 0.9rem; 
+            transition: color 0.3s ease; position: relative;
+        }
         .nav-links a:hover { color: var(--primary); }
-        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: var(--text-light); }
+        /* Garis bawah animasi saat hover menu */
+        .nav-links a::after {
+            content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0;
+            background-color: var(--primary); transition: width 0.3s ease;
+        }
+        .nav-links a:hover::after { width: 100%; }
+
+        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: var(--text-light); transition: color 0.3s ease; }
+        .menu-toggle:hover { color: var(--primary); }
 
         /* --- HERO SECTION --- */
         header {
@@ -69,7 +85,10 @@
             box-shadow: 0 0 30px rgba(14, 165, 233, 0.5);
             margin-bottom: 20px;
             animation: float 6s ease-in-out infinite;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+        .profile-img:hover { transform: scale(1.05); box-shadow: 0 0 40px rgba(14, 165, 233, 0.7); }
+
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
         
         h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 10px; color: var(--text-light); }
@@ -79,9 +98,11 @@
         .social-icon {
             width: 45px; height: 45px; border-radius: 50%; border: 2px solid var(--primary);
             display: flex; align-items: center; justify-content: center;
-            color: var(--primary); text-decoration: none; transition: 0.3s; font-size: 1.2rem;
+            color: var(--primary); text-decoration: none; 
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy transition */
+            font-size: 1.2rem;
         }
-        .social-icon:hover { background: var(--primary); color: white; transform: translateY(-5px); }
+        .social-icon:hover { background: var(--primary); color: white; transform: translateY(-5px) scale(1.1); }
 
         /* --- CONTAINER --- */
         .container { max-width: 1100px; margin: 0 auto; padding: 60px 20px; border-bottom: 1px solid #1e293b; }
@@ -91,9 +112,11 @@
         }
         h2::after {
             content: ''; position: absolute; bottom: -10px; left: 0; width: 100%; height: 3px; background: var(--primary);
+            transition: width 0.3s ease;
         }
+        h2:hover::after { width: 50%; left: 25%; } /* Efek hover pada garis bawah judul */
 
-        /* --- SLIDESHOW GALLERY (SUPER SMOOTH ANIMATION) --- */
+        /* --- SLIDESHOW GALLERY --- */
         .slideshow-container {
             position: relative;
             max-width: 900px;
@@ -103,70 +126,58 @@
             box-shadow: 0 20px 50px rgba(0,0,0,0.5);
             border: 2px solid #334155;
             background-color: #000;
+            transition: transform 0.3s ease;
         }
         
         .slide { 
             display: none; 
             width: 100%; 
-            height: 500px; /* Tinggi Tetap */
+            height: 500px; 
             position: relative;
             overflow: hidden;
         }
 
-        /* ANIMASI HALUS (Cinematic Fade + Zoom) */
-        .slide.active { 
-            display: block; 
-            animation: cinematicEffect 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards; 
-        }
+        .slide.active { display: block; animation: cinematicEffect 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
         
         @keyframes cinematicEffect {
-            from { 
-                opacity: 0; 
-                transform: scale(1.08); /* Mulai agak nge-zoom */
-            }
-            to { 
-                opacity: 1; 
-                transform: scale(1); /* Kembali ke ukuran normal */
-            }
+            from { opacity: 0; transform: scale(1.08); }
+            to { opacity: 1; transform: scale(1); }
         }
 
-        .slide img {
-            width: 100%; 
-            height: 100%; 
-            object-fit: contain; /* Pastikan foto utuh */
-        }
+        .slide img { width: 100%; height: 100%; object-fit: contain; }
         
         .caption-text {
             color: #fff; font-size: 15px; padding: 15px; position: absolute; bottom: 0;
             width: 100%; text-align: center; background: rgba(0, 0, 0, 0.85);
             font-weight: 500; letter-spacing: 0.5px;
-            /* Animasi teks muncul sedikit terlambat agar elegan */
-            animation: fadeUp 1s ease-out 0.5s forwards;
-            opacity: 0; 
-            transform: translateY(20px);
+            animation: fadeUp 1s ease-out 0.5s forwards; opacity: 0; transform: translateY(20px);
         }
 
-        @keyframes fadeUp {
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
         
         .prev, .next {
             cursor: pointer; position: absolute; top: 50%; width: auto;
             padding: 16px; margin-top: -22px; color: white; font-weight: bold;
             font-size: 24px; transition: 0.3s ease; border-radius: 0 5px 5px 0;
-            background-color: rgba(0,0,0,0.3); user-select: none;
-            z-index: 10;
+            background-color: rgba(0,0,0,0.3); user-select: none; z-index: 10;
         }
         .next { right: 0; border-radius: 5px 0 0 5px; }
         .prev:hover, .next:hover { background-color: var(--primary); transform: scale(1.1); }
+        /* Efek tekan pada panah */
+        .prev:active, .next:active { transform: scale(0.95); }
 
         /* --- PENGALAMAN KERJA --- */
         .timeline-box {
             background: var(--card-bg); padding: 30px; border-radius: 15px;
             margin-bottom: 30px; border-left: 5px solid var(--primary);
-            transition: 0.3s;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            cursor: default; /* Menandakan ini bukan tombol, tapi interaktif */
         }
-        .timeline-box:hover { transform: translateX(5px); background: #253246; }
+        .timeline-box:hover { 
+            transform: translateX(8px) translateY(-3px); 
+            background: #253246; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
         .role { color: var(--primary); font-weight: 700; font-size: 1.3rem; margin-bottom: 5px; }
         .org-box .role { color: var(--accent); }
         .org-box { border-left-color: var(--accent); }
@@ -188,10 +199,25 @@
         .cert-btn-block {
             display: flex; align-items: center; gap: 15px; background: var(--card-bg);
             padding: 15px; border-radius: 10px; text-decoration: none; color: var(--text-light);
-            border: 1px solid transparent; transition: 0.3s;
+            border: 1px solid transparent; 
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efek 'spring' halus */
+            position: relative; overflow: hidden;
         }
-        .cert-btn-block:hover { border-color: var(--primary); transform: translateY(-5px); background: #253246; }
-        .cert-btn-block i { font-size: 1.8rem; color: var(--primary); }
+        /* Efek Hover & Active pada Kartu Sertifikat */
+        .cert-btn-block:hover { 
+            border-color: var(--primary); 
+            transform: translateY(-5px); 
+            background: #253246; 
+            box-shadow: 0 5px 15px rgba(14, 165, 233, 0.15);
+        }
+        .cert-btn-block:active {
+            transform: translateY(-2px) scale(0.98); /* Efek tekan halus */
+            background: #1e293b;
+        }
+
+        .cert-btn-block i { font-size: 1.8rem; color: var(--primary); transition: transform 0.3s ease; }
+        .cert-btn-block:hover i { transform: scale(1.2) rotate(5deg); } /* Ikon bergerak saat hover */
+
         .org-icon { color: var(--accent) !important; }
         .sem-icon { color: var(--success) !important; }
         
@@ -199,30 +225,61 @@
         .cert-name { font-weight: 600; font-size: 0.95rem; line-height: 1.3; }
         .cert-type { font-size: 0.75rem; color: var(--text-gray); margin-top: 3px; }
 
-        /* --- KONTAK --- */
+        /* --- KONTAK & FORMULIR --- */
         .contact-cta { text-align: center; margin-bottom: 40px; }
         .cta-text { font-size: 1.1rem; color: #cbd5e1; margin-bottom: 20px; }
+        
         .btn-download-cv {
             display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: #0f172a;
-            padding: 12px 30px; border-radius: 50px; font-weight: 700; text-decoration: none; transition: 0.3s;
+            padding: 12px 30px; border-radius: 50px; font-weight: 700; text-decoration: none; 
+            transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(245, 158, 11, 0.3);
         }
-        .btn-download-cv:hover { transform: translateY(-3px); background: #eab308; }
+        .btn-download-cv:hover { transform: translateY(-3px) scale(1.05); background: #eab308; box-shadow: 0 8px 20px rgba(245, 158, 11, 0.4); }
+        .btn-download-cv:active { transform: translateY(1px) scale(0.98); }
+
         .contact-wrapper { background: var(--card-bg); padding: 30px; border-radius: 15px; max-width: 600px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        
         .form-group { margin-bottom: 20px; text-align: left; }
         .form-label { display: block; margin-bottom: 8px; color: var(--text-light); font-weight: 600; }
-        .form-input, .form-textarea { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #334155; background: var(--dark); color: white; font-family: inherit; }
+        
+        /* Form Input dengan Efek Focus */
+        .form-input, .form-textarea { 
+            width: 100%; padding: 12px; border-radius: 8px; 
+            border: 2px solid #334155; /* Border sedikit lebih tebal */
+            background: var(--dark); color: white; font-family: inherit;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        /* Feedback Visual saat mengetik */
+        .form-input:focus, .form-textarea:focus { 
+            border-color: var(--primary); 
+            outline: none; 
+            box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.1); /* Glow effect */
+        }
+
         .btn-send-group { display: flex; gap: 10px; margin-top: 20px; }
-        .btn-submit { flex: 1; padding: 12px; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; transition: 0.3s; color: white; display: flex; align-items: center; justify-content: center; gap: 8px; }
-        .btn-wa-send { background: #25D366; }
-        .btn-email-send { background: var(--primary); }
+        .btn-submit { 
+            flex: 1; padding: 12px; border: none; border-radius: 8px; cursor: pointer; 
+            font-weight: 600; transition: all 0.2s ease; color: white; 
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+        
+        /* Tombol Kirim dengan Micro-interaction */
+        .btn-wa-send { background: #25D366; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.2); }
+        .btn-wa-send:hover { background: #1ebe57; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(37, 211, 102, 0.3); }
+        .btn-wa-send:active { transform: translateY(0) scale(0.98); } /* Efek tekan */
+
+        .btn-email-send { background: var(--primary); box-shadow: 0 4px 10px rgba(14, 165, 233, 0.2); }
+        .btn-email-send:hover { background: #0284c7; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(14, 165, 233, 0.3); }
+        .btn-email-send:active { transform: translateY(0) scale(0.98); }
 
         footer { text-align: center; padding: 30px; background: #020617; color: var(--text-gray); font-size: 0.9rem; }
 
         @media (max-width: 768px) {
             .menu-toggle { display: block; }
             .nav-links { position: absolute; top: 60px; left: 0; width: 100%; background: var(--card-bg); flex-direction: column; display: none; padding: 20px 0; gap: 20px; border-bottom: 1px solid #334155; }
-            .nav-links.active { display: flex; }
+            .nav-links.active { display: flex; animation: slideDown 0.3s ease-out; }
+            @keyframes slideDown { from {opacity:0; transform: translateY(-10px);} to {opacity:1; transform: translateY(0);} }
             h1 { font-size: 2rem; }
             .btn-send-group { flex-direction: column; }
             .slide { height: 250px; }
